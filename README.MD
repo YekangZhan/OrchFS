@@ -46,6 +46,7 @@ mkdir build
 cmake ..
 make
 ```
+### Test examples:
 
 3. Example of Micro-benchmark
 ```
