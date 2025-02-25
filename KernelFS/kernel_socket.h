@@ -14,7 +14,7 @@
 #include <semaphore.h>
 
 
-#define MAX_PORT_NUM                   8
+#define MAX_PORT_NUM                   32
 #define KER_LISTEN_PORT_NUM            5
 
 #define KWORK_USED                     1

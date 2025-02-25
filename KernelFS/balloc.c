@@ -12,7 +12,7 @@ void init_mem_bmp()
 {
 	void* sb_addr = valloc(SIZE_4KiB);
 	read_data_from_devs(sb_addr, 512, 0);
-	orch_super_blk_pt out = (orch_super_blk_pt)sb_addr;
+	// orch_super_blk_pt out = (orch_super_blk_pt)sb_addr;
 	orch_super_blk_pt sb_pt = (orch_super_blk_pt)sb_addr;
 	for(int i = START_BMP_ID; i <= END_BMP_ID; i++)
 	{
@@ -73,7 +73,7 @@ void init_mem_bmp()
 uint32_t sync_type_mem_bmp(int32_t bmp_type)
 {
 	mem_bmp_pt bmp_info = mem_bmp_arr+bmp_type;
-	uint8_t* outpt = bmp_info->bmp_start_pt;
+	// uint8_t* outpt = bmp_info->bmp_start_pt;
 	write_data_to_devs(bmp_info->bmp_start_pt, bmp_info->bmp_capacity, bmp_info->dev_start_addr);
 	return 0;
 }
@@ -111,7 +111,7 @@ uint32_t sync_mem_bmp(int32_t bmp_type, int64_t bit_off, int64_t bit_len)
 	return 0;
 }
 
-uint32_t delete_mem_bmp()
+void delete_mem_bmp()
 {
 	for(int i = START_BMP_ID; i <= END_BMP_ID; i++)
 	{
@@ -199,6 +199,7 @@ uint32_t do_alloc(int32_t bmp_type, uint64_t alloc_blk_num, uint64_t addr_list[]
 	}
 	return 0;
 failed:
+	printf("error info: %d %lld %lld %lld\n",bmp_type, bmp_info->bmp_used_num, alloc_blk_num, bmp_info->bmp_capacity);
 	printf("bad alloc!\n");
 	return 3;
 }
@@ -221,18 +222,18 @@ uint32_t do_dealloc(int32_t bmp_type, int64_t blk_id)
 failed:
 	printf("dealloc error, the address is out of range!\n");
 	return 4;
-error:
-	printf("The address is Non-aligned!\n");
-	return 5;
+// error:
+// 	printf("The address is Non-aligned!\n");
+// 	return 5;
 warning:
-	printf("dealloc warning, the block does not exist! -- %d %lld\n",bmp_type,blk_id);
+	printf("dealloc warning, the block does not exist! -- %d %"PRId64"\n",bmp_type,blk_id);
 	return 6;
 }
 
 /* inode */
 uint64_t alloc_single_inode(int return_type)
 {
-	int64_t ret_addr_list[3] = {0};
+	uint64_t ret_addr_list[3] = {0};
 	int error_info = do_alloc(INODE_BMP, 1, ret_addr_list);
 	if(error_info==0)
 	{
@@ -250,8 +251,9 @@ void alloc_inodes(int64_t alloc_blk_num, uint64_t addr_list[], int return_type)
 	int error_info = do_alloc(INODE_BMP, alloc_blk_num, addr_list);
 	if(return_type == RET_BLK_ADDR)
 	{
+		// ------ balloc check correct ---------
 		for(int64_t i = 0; i < alloc_blk_num; i++)
-			INODE_BLKID_TO_DEVADDR(addr_list[i]);
+			addr_list[i] = INODE_BLKID_TO_DEVADDR(addr_list[i]);
 	}
 	if(error_info==3)
 		exit(0);
@@ -290,7 +292,7 @@ void alloc_idx_nodes(int64_t alloc_blk_num, uint64_t addr_list[], int return_typ
 	if(return_type == RET_BLK_ADDR)
 	{
 		for(int64_t i = 0; i < alloc_blk_num; i++)
-			IDX_BLKID_TO_DEVADDR(addr_list[i]);
+			addr_list[i] = IDX_BLKID_TO_DEVADDR(addr_list[i]);
 	}
 	if(error_info==3)
 		exit(0);
@@ -329,7 +331,7 @@ void alloc_viridx_nodes(int64_t alloc_blk_num, uint64_t addr_list[], int return_
 	if(return_type == RET_BLK_ADDR)
 	{
 		for(int64_t i = 0; i < alloc_blk_num; i++)
-			VIRND_BLKID_TO_DEVADDR(addr_list[i]);
+			addr_list[i] = VIRND_BLKID_TO_DEVADDR(addr_list[i]);
 	}
 	if(error_info==3)
 		exit(0);
@@ -368,7 +370,7 @@ void alloc_bufmeta_nodes(int64_t alloc_blk_num, uint64_t addr_list[], int return
 	if(return_type == RET_BLK_ADDR)
 	{
 		for(int64_t i = 0; i < alloc_blk_num; i++)
-			BUFMETA_BLKID_TO_DEVADDR(addr_list[i]);
+			addr_list[i] = BUFMETA_BLKID_TO_DEVADDR(addr_list[i]);
 	}
 	if(error_info==3)
 		exit(0);
@@ -407,7 +409,7 @@ void alloc_nvm_pages(int64_t alloc_blk_num, uint64_t addr_list[], int return_typ
 	if(return_type == RET_BLK_ADDR)
 	{
 		for(int64_t i = 0; i < alloc_blk_num; i++)
-			PAGE_BLKID_TO_DEVADDR(addr_list[i]);
+			addr_list[i] = PAGE_BLKID_TO_DEVADDR(addr_list[i]);
 	}
 	if(error_info==3)
 		exit(0);
@@ -446,7 +448,7 @@ void alloc_ssd_blocks(int64_t alloc_blk_num, uint64_t addr_list[], int return_ty
 	if(return_type == RET_BLK_ADDR)
 	{
 		for(int64_t i = 0; i < alloc_blk_num; i++)
-			BLOCK_BLKID_TO_DEVADDR(addr_list[i]);
+			addr_list[i] = BLOCK_BLKID_TO_DEVADDR(addr_list[i]);
 	}
 	if(error_info==3)
 		exit(0);

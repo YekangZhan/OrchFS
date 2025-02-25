@@ -68,7 +68,7 @@ void* get_and_eliminate_LRU_node(LRU_pt now_lru)
     pthread_spin_unlock(&(now_lru->lru_lock));
     return ret_pt;
 LRU_list_error:
-    fprintf(stderr,"The structure of LRU list is error! - %d\n",now_lru->LRU_item_num);
+    fprintf(stderr,"The structure of LRU list is error! - %"PRId64"\n",now_lru->LRU_item_num);
     exit(0);
 }
 
@@ -138,7 +138,7 @@ int add_LRU_node(LRU_pt now_lru, int64_t LRU_key, void* value, int64_t value_len
 
 
         int64_t* ans_int64 = malloc(sizeof(int64_t));
-        ans_int64[0] = now_lru->LRU_list_end;
+        ans_int64[0] = (int64_t)now_lru->LRU_list_end;
         add_kv_into_hashtable(now_lru->key_to_lrund, LRU_key, ans_int64, sizeof(int64_t));
 
 

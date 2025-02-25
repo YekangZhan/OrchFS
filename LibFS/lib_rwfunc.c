@@ -15,7 +15,7 @@
 #ifdef SSD_NOT_PARALLEL
     #define MAX_SPLIT_SSDBLK                 128
 #else
-    #define MAX_SPLIT_SSDBLK                 1
+    #define MAX_SPLIT_SSDBLK                 ORCH_MAX_SPLIT_BLK
 #endif
 
 #define STRATA_THRESHOLD                 6
@@ -64,10 +64,10 @@ para_error:
 void strata_write(off_info_t blk_info, int64_t write_pos, int64_t write_len, void* write_buf,
                     io_task_pt* ssd_task_end_pt, io_task_pt* nvm_task_end_pt)
 {
-#ifdef COUNT_TIME
-    struct timespec time_start;
-	struct timespec time_end;
-#endif
+// #ifdef COUNT_TIME
+//     struct timespec time_start;
+// 	struct timespec time_end;
+// #endif
     
     // printf("write: %lld %lld\n",write_pos,write_len);
     int64_t start_page_id = (write_pos >> ORCH_PAGE_BW);
@@ -149,9 +149,9 @@ void strata_write(off_info_t blk_info, int64_t write_pos, int64_t write_len, voi
                 goto buffer_meta_out_range;
             else if(bufmeta_info[0] == MAX_BUF_SEG_NUM)
             {
-#ifdef COUNT_TIME
-                clock_gettime(CLOCK_MONOTONIC, &time_start);
-#endif
+// #ifdef COUNT_TIME
+//                 clock_gettime(CLOCK_MONOTONIC, &time_start);
+// #endif
                 // 所有的缓存元数据槽位都用完了，需要清理
                 void* page_buf = malloc(ORCH_PAGE_SIZE);
                 void* combine_buf = malloc(ORCH_BLOCK_SIZE);
@@ -169,14 +169,14 @@ void strata_write(off_info_t blk_info, int64_t write_pos, int64_t write_len, voi
                 free(page_buf);
                 free(combine_buf);
                 bufmeta_info[0] = 0;
-#ifdef COUNT_ON
-                orch_rt.wback_num += 1;
-#endif
-#ifdef COUNT_TIME
-                clock_gettime(CLOCK_MONOTONIC, &time_end);
-                long time2 = calc_diff(time_start, time_end);
-                orch_rt.wback_time += time2;
-#endif
+// #ifdef COUNT_ON
+//                 orch_rt.wback_num += 1;
+// #endif
+// #ifdef COUNT_TIME
+//                 clock_gettime(CLOCK_MONOTONIC, &time_end);
+//                 long time2 = calc_diff(time_start, time_end);
+//                 orch_rt.wback_time += time2;
+// #endif
             }
 
             bufmeta_info[0] += 1;
@@ -621,13 +621,13 @@ int count_task_num(io_task_pt task_head_pt, io_task_pt task_end_pt)
  */
 void do_nvm_task(io_task_pt task_head_pt, io_task_pt task_end_pt)
 {
-#ifdef COUNT_TIME
-    struct timespec pm_time_start;
-    struct timespec pm_time_end;
-#endif
-#ifdef COUNT_TIME
-    clock_gettime(CLOCK_MONOTONIC, &pm_time_start);
-#endif
+// #ifdef COUNT_TIME
+//     struct timespec pm_time_start;
+//     struct timespec pm_time_end;
+// #endif
+// #ifdef COUNT_TIME
+//     clock_gettime(CLOCK_MONOTONIC, &pm_time_start);
+// #endif
 
     io_task_pt now_task_pt = task_head_pt;
     io_pth_pool_pt pool = &orch_io_scheduler;
@@ -658,11 +658,11 @@ void do_nvm_task(io_task_pt task_head_pt, io_task_pt task_end_pt)
         now_task_pt = now_task_pt->next;
         sem_post(&(pool->nvm_rw_sem));
     }
-#ifdef COUNT_TIME
-    clock_gettime(CLOCK_MONOTONIC, &pm_time_end);
-    long time2 = calc_diff(pm_time_start, pm_time_end);
-    orch_rt.pm_time += time2;
-#endif
+// #ifdef COUNT_TIME
+//     clock_gettime(CLOCK_MONOTONIC, &pm_time_end);
+//     long time2 = calc_diff(pm_time_start, pm_time_end);
+//     orch_rt.pm_time += time2;
+// #endif
     return;
 cannot_read:
 	printf("parameter error -- cannot_read\n");
@@ -677,7 +677,7 @@ cannot_write:
 void do_ssd_task(io_task_pt task_head_pt, io_task_pt task_end_pt)
 {
     io_task_pt now_task_pt = task_head_pt;
-    io_pth_pool_pt pool = &orch_io_scheduler;
+    // io_pth_pool_pt pool = &orch_io_scheduler;
     while(now_task_pt != task_end_pt)
     {
         if((now_task_pt->io_type & READ_OP) != 0)
@@ -725,13 +725,13 @@ void print_task(ino_id_t ino_id, io_task_pt task_head_pt, io_task_pt task_end_pt
         io_task_pt nt = now_task_pt;
         if(io_type == READ_OP)
         {
-            printf("readtask_info: %" PRId64" %" PRId64" %" PRId64" %" PRId64"\n",
-                ino_id, nt->io_start_addr,nt->io_len,nt->io_data_buf);
+            printf("readtask_info: %" PRId64" %" PRId64" %" PRId64" \n",
+                ino_id, nt->io_start_addr, nt->io_len);
         }
         else if(io_type == WRITE_OP)
         {
-            printf("writetask_info: %" PRId64" %" PRId64" %" PRId64" %" PRId64"\n",
-                ino_id, nt->io_start_addr,nt->io_len,nt->io_data_buf);
+            printf("writetask_info: %" PRId64" %" PRId64" %" PRId64" \n",
+                ino_id, nt->io_start_addr, nt->io_len);
         }
         now_task_pt = now_task_pt->next;
     }
@@ -772,14 +772,14 @@ void print_blk_off(off_info_t blk_off_info[], int64_t blk_num)
 
 void read_from_file(int fd, int64_t read_start_byte, int64_t read_len, void* read_buf)
 {
-#ifdef COUNT_TIME
-    struct timespec index_watch_start;
-	struct timespec index_watch_end;
-#endif
+// #ifdef COUNT_TIME
+//     struct timespec index_watch_start;
+// 	struct timespec index_watch_end;
+// #endif
 
-#ifdef COUNT_TIME
-    clock_gettime(CLOCK_MONOTONIC, &index_watch_start);
-#endif
+// #ifdef COUNT_TIME
+//     clock_gettime(CLOCK_MONOTONIC, &index_watch_start);
+// #endif
 
     if(read_len <= 0)
         goto len_error;
@@ -871,17 +871,17 @@ void read_from_file(int fd, int64_t read_start_byte, int64_t read_len, void* rea
     // print_task(ino_id, ssd_io_task_head, ssd_io_task_end, READ_OP);
     // printf("nvm task:\n");
     // print_task(ino_id, nvm_io_task_head, nvm_io_task_end);
-#ifdef COUNT_TIME
-    clock_gettime(CLOCK_MONOTONIC, &index_watch_end);
-    long time1 = calc_diff(index_watch_start, index_watch_end);
-    orch_rt.index_time += time1;
-#endif
+// #ifdef COUNT_TIME
+//     clock_gettime(CLOCK_MONOTONIC, &index_watch_end);
+//     long time1 = calc_diff(index_watch_start, index_watch_end);
+//     orch_rt.index_time += time1;
+// #endif
 
-#ifdef COUNT_TIME
-    struct timespec io_time_start;
-	struct timespec io_time_end;
-    clock_gettime(CLOCK_MONOTONIC, &io_time_start);
-#endif
+// #ifdef COUNT_TIME
+//     struct timespec io_time_start;
+// 	struct timespec io_time_end;
+//     clock_gettime(CLOCK_MONOTONIC, &io_time_start);
+// #endif
 
 
     int ssd_task_num = count_task_num(ssd_io_task_head, ssd_io_task_end);
@@ -899,11 +899,11 @@ void read_from_file(int fd, int64_t read_start_byte, int64_t read_len, void* rea
         wait_task_done(task_group_id);
 #endif
 
-#ifdef COUNT_TIME
-    clock_gettime(CLOCK_MONOTONIC, &io_time_end);
-    long time2 = calc_diff(io_time_start, io_time_end);
-    orch_rt.io_time += time2;
-#endif
+// #ifdef COUNT_TIME
+//     clock_gettime(CLOCK_MONOTONIC, &io_time_end);
+//     long time2 = calc_diff(io_time_start, io_time_end);
+//     orch_rt.io_time += time2;
+// #endif
 
 
     unlock_range_lock(root_id, ino_id, start_blk_off, end_blk_off);
@@ -927,14 +927,14 @@ index_error:
 
 void write_into_file(int fd, int64_t file_start_byte, int64_t write_len, void* write_buf)
 {
-#ifdef COUNT_TIME
-    struct timespec index_watch_start;
-	struct timespec index_watch_end;
-#endif
+// #ifdef COUNT_TIME
+//     struct timespec index_watch_start;
+// 	struct timespec index_watch_end;
+// #endif
     
-#ifdef COUNT_TIME
-    clock_gettime(CLOCK_MONOTONIC, &index_watch_start);
-#endif
+// #ifdef COUNT_TIME
+//     clock_gettime(CLOCK_MONOTONIC, &index_watch_start);
+// #endif
 
     if(write_len <= 0)
         goto len_error;
@@ -1023,11 +1023,11 @@ void write_into_file(int fd, int64_t file_start_byte, int64_t write_len, void* w
                          &nvm_io_task_end, now_wbuf, WRITE_OP);
     }
 
-#ifdef COUNT_TIME
-    clock_gettime(CLOCK_MONOTONIC, &index_watch_end);
-    long time1 = calc_diff(index_watch_start, index_watch_end);
-    orch_rt.index_time += time1;
-#endif
+// #ifdef COUNT_TIME
+//     clock_gettime(CLOCK_MONOTONIC, &index_watch_end);
+//     long time1 = calc_diff(index_watch_start, index_watch_end);
+//     orch_rt.index_time += time1;
+// #endif
 
     // printf("ssd task:\n");
     // print_task(ino_id, ssd_io_task_head, ssd_io_task_end, WRITE_OP);
@@ -1035,11 +1035,11 @@ void write_into_file(int fd, int64_t file_start_byte, int64_t write_len, void* w
     // print_task(ino_id, nvm_io_task_head, nvm_io_task_end, WRITE_OP);
 
 
-#ifdef COUNT_TIME
-    struct timespec io_time_start;
-	struct timespec io_time_end;
-    clock_gettime(CLOCK_MONOTONIC, &io_time_start);
-#endif
+// #ifdef COUNT_TIME
+//     struct timespec io_time_start;
+// 	struct timespec io_time_end;
+//     clock_gettime(CLOCK_MONOTONIC, &io_time_start);
+// #endif
 
     int ssd_task_num = count_task_num(ssd_io_task_head, ssd_io_task_end);
     int task_group_id = -1;
@@ -1052,19 +1052,21 @@ void write_into_file(int fd, int64_t file_start_byte, int64_t write_len, void* w
         task_group_id = add_task(ssd_io_task_head, nvm_io_task_head, ssd_task_num, 0, fd);
     if(ssd_task_num > 0 && task_group_id != -1)
         wait_task_done(task_group_id);
-    
-    clock_gettime(CLOCK_MONOTONIC, &io_time_end);
-    long time3 = calc_diff(io_time_start, io_time_end);
-    orch_rt.blk_time += time3;
+
+// #ifdef COUNT_TIME
+    // clock_gettime(CLOCK_MONOTONIC, &io_time_end);
+    // long time3 = calc_diff(io_time_start, io_time_end);
+    // orch_rt.blk_time += time3;
+// #endif
     
     do_nvm_task(nvm_io_task_head, nvm_io_task_end);
 #endif
 
-#ifdef COUNT_TIME
-    clock_gettime(CLOCK_MONOTONIC, &io_time_end);
-    long time2 = calc_diff(io_time_start, io_time_end);
-    orch_rt.io_time += time2;
-#endif
+// #ifdef COUNT_TIME
+//     clock_gettime(CLOCK_MONOTONIC, &io_time_end);
+//     long time2 = calc_diff(io_time_start, io_time_end);
+//     orch_rt.io_time += time2;
+// #endif
 
     unlock_range_lock(root_id, ino_id, start_blk_off, end_blk_off);
     free(blk_info_pt);

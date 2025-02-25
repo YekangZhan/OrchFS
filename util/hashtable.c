@@ -122,7 +122,4 @@ void free_hashtable(hashtable_pt ht)
         free_list(ht->ht_node_pt[i]);
     }
     return;
-error:
-    printf("The hashtable is error! -- free\n");
-    exit(0);
 }

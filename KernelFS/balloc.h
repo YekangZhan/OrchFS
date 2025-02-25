@@ -57,7 +57,7 @@ uint32_t sync_all_mem_bmp();
 uint32_t sync_mem_bmp(int32_t bmp_type, int64_t bit_off, int64_t bit_len);
 
 
-uint32_t delete_mem_bmp();
+void delete_mem_bmp();
 
 /*---------------------------------inode----------------------------------*/
 /* alloc nvm page

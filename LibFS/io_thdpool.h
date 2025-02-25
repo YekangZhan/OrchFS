@@ -9,14 +9,16 @@
 #include <unistd.h> 
 #include <inttypes.h>
 
+#include "../config/config.h"
+
 
 #define GROUP_USE                  1
 #define GROUP_NOT_USE              0
 
 #define MIGRATE_THREADS            1
-#define MAX_NVM_THREADS            5
-#define MAX_SSD_THREADS            32
-#define IO_TOTAL_THREADS           32
+#define MAX_NVM_THREADS            ORCH_CONFIG_NVMTHD
+#define MAX_SSD_THREADS            ORCH_CONFIG_SSDTHD
+#define IO_TOTAL_THREADS           ORCH_CONFIG_SSDTHD
 #define MAX_TASK_GROUP_NUM         4096
 
 #define READ_OP                    0b0001

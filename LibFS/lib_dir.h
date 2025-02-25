@@ -31,7 +31,7 @@ adding, deleting, modifying, and querying directory entries*/
 #define CREATE_PATH              1
 #define NOT_CREATE_PATH          0
 
-#define ORCH_MAX_NAME             230
+#define ORCH_MAX_NAME            230
 #define DIRENT_SIZE              256
 
 #define PATH_EXIST               1

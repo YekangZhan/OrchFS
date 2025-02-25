@@ -8,6 +8,22 @@
 extern "C"{
 #endif
 
+void reqlock_unlock()
+{
+    pthread_spin_unlock(&(orch_rt.req_kernel_lock));
+    // printf("unlock\n");
+}
+void reqlock_lock()
+{
+    pthread_spin_lock(&(orch_rt.req_kernel_lock));
+    // printf("lock\n");
+}
+
+void orch_time_stamp(struct timespec * time)
+{
+    clock_gettime(CLOCK_REALTIME, time);
+}
+
 
 void debug(void* out)
 {

@@ -91,7 +91,7 @@ fd_error:
     printf("The fd is error! -- lock_rdlock %d\n",fd);
     exit(1);
 file_not_open:
-    printf("The target file is not open! -- lock_rdlock %d %" PRId64 "\n",fd,inot_idx);
+    printf("The target file is not open! -- lock_rdlock %d %d\n",fd,inot_idx);
     exit(1);
 }
 
@@ -118,7 +118,7 @@ fd_error:
     printf("The fd is error! -- lock_wrlock %d\n",fd);
     exit(1);
 file_not_open:
-    printf("The target file is not open! -- lock_wrlock %d %" PRId64 "\n",fd,inot_idx);
+    printf("The target file is not open! -- lock_wrlock %d %d\n",fd,inot_idx);
     exit(1);
 }
 
@@ -145,7 +145,7 @@ fd_error:
     printf("The fd is error! -- lock_unlock %d\n",fd);
     exit(1);
 file_not_open:
-    printf("The target file is not open! -- lock_unlock %d %" PRId64 "\n",fd,inot_idx);
+    printf("The target file is not open! -- lock_unlock %d %d\n",fd,inot_idx);
     exit(1);
 }
 
@@ -176,7 +176,7 @@ fd_error:
     printf("The fd is error! -- fd_to_inodept\n");
     exit(1);
 file_not_open:
-    printf("The target file is not open! -- fd_to_inodept %d %" PRId64 "\n",fd,inot_idx);
+    printf("The target file is not open! -- fd_to_inodept %d %d\n",fd,inot_idx);
     exit(1);
 }
 
@@ -210,7 +210,7 @@ fd_error:
     printf("The fd is error! -- fd_to_inodeid\n");
     exit(1);
 file_not_open:
-    printf("The target file is not open! -- fd_to_inodeid %d %" PRId64 "\n",fd,inot_idx);
+    printf("The target file is not open! -- fd_to_inodeid %d %d\n",fd,inot_idx);
     exit(1);
 }
 
@@ -229,9 +229,6 @@ int64_t get_fd_file_offset(int fd)
     return -1;
 fd_error:
     printf("The fd is error! -- get_fd_file_offset\n");
-    exit(1);
-file_not_open:
-    printf("The target file is not open! -- get_fd_file_offset\n");
     exit(1);
 }
 
@@ -266,9 +263,9 @@ void change_fd_file_offset(int fd, int64_t changed_offset)
 fd_error:
     printf("The fd is error! -- change_fd_file_offset\n");
     exit(1);
-file_not_open:
-    printf("The target file is not open! -- change_fd_file_offset\n");
-    exit(1);
+// file_not_open:
+//     printf("The target file is not open! -- change_fd_file_offset\n");
+//     exit(1);
 }
 
 int inode_open(int64_t inode_id, int mode)
@@ -291,7 +288,7 @@ int inode_open(int64_t inode_id, int mode)
                 // fprintf(stderr,"create end!\n");
                 orch_rt.open_inot[now_ino_cur].inode_pt = inodeid_to_memaddr(inode_id);
                 // fprintf(stderr,"open begin: %lld %d %lld\n",inode_id,i,orch_rt.open_inot[now_ino_cur].inode_pt);
-                pthread_spin_init(&(orch_rt.open_inot[now_ino_cur].inode_pt->i_lock), NULL);
+                pthread_spin_init(&(orch_rt.open_inot[now_ino_cur].inode_pt->i_lock), PTHREAD_PROCESS_SHARED);
                 // fprintf(stderr,"create end2!\n");
                 if(orch_rt.open_inot[now_ino_cur].inode_pt == NULL)
                     goto inode_id_error;

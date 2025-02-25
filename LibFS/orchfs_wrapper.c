@@ -517,7 +517,7 @@ OP_DEFINE(OPEN){
 		insert_real_op();
 	}
 	int dirflag=0;
-	if(path[0]=='/'&&path[1]=='x'&&path[2]=='x')
+	if(path[0]=='/'&&path[1]=='O'&&path[2]=='r')
 		dirflag=1;
 	// fprintf(stderr,"open call\n");
 	// fprintf(stderr,"open %s\n",path);
@@ -576,7 +576,7 @@ OP_DEFINE(OPEN){
 			// printf("my open error\n");
 			// printf("test open again!\n");
 			// printf("open again path=%s dirflag=%d\n",newpath,dirflag);
-			va_list ap;
+			// va_list ap;
 			// oflag|=O_CREAT;
 			// oflag|=O_RDWR;
 			if(*path=='\\')
@@ -627,7 +627,7 @@ OP_DEFINE(LIBC_OPEN64){
 	exit(1);
 	// printf("libc_open %s\n",path);
 // 	int dirflag=0;
-// 	if(path[0]=='/'&&path[1]=='x'&&path[2]=='x')
+// 	if(path[0]=='/'&&path[1]='O'&&path[2]=='r')
 // 		dirflag=1;
 // 	if(*path == '\\' || *path != '/' || dirflag){
 // 		//printf("my lic_open\n");
@@ -691,7 +691,7 @@ OP_DEFINE(OPENAT){
 	fflush(stdout);
 	// printf("openat %s\n",path);
 	int dirflag=0;
-	if(path[0]=='/'&&path[1]=='x'&&path[2]=='x')
+	if(path[0]=='/'&&path[1]=='O'&&path[2]=='r')
 		dirflag=1;
 	if(*path == '\\' || *path != '/' || dirflag){
 		//printf("my openat\n");
@@ -748,7 +748,7 @@ OP_DEFINE(CREAT){
 	// fflush(stdout);
 	// printf("creat path=%s\n",path);
 	int dirflag=0;
-	if(path[0]=='/'&&path[1]=='x'&&path[2]=='x')
+	if(path[0]=='/'&&path[1]=='O'&&path[2]=='r')
 		dirflag=1;
 	if(*path == '\\' || *path != '/' || dirflag){
 		PRINT_FUNC;
@@ -793,7 +793,7 @@ OP_DEFINE(ACCESS){
 	// printf("access %s\n",pathname);
 	// fflush(stdout);
 	int dirflag=0;
-	if(pathname[0]=='/'&&pathname[1]=='x'&&pathname[2]=='x')
+	if(pathname[0]=='/'&&pathname[1]=='O'&&pathname[2]=='r')
 		dirflag=1;
 	if(*pathname == '\\' || *pathname != '/' ||dirflag){
 		// PRINT_FUNC;
@@ -844,9 +844,8 @@ OP_DEFINE(TRUNC){
 	// fflush(stdout);
 	// printf("trunc path=%s length=%d\n",path,length);
 	// fflush(stdout);
-	int op = 0;
 	int dirflag=0;
-	if(path[0]=='/'&&path[1]=='x'&&path[2]=='x')
+	if(path[0]=='/'&&path[1]=='O'&&path[2]=='r')
 		dirflag=1;
 	if(*path == '\\' || *path != '/' || dirflag){
 		PRINT_FUNC;
@@ -892,7 +891,7 @@ OP_DEFINE(LINK){
 	return 0;
 	//printf("path1=%s path2=%s\n",path1,path2);
 	// int dirflag=0;
-	// if(path1[0]=='/'&&path1[1]=='x'&&path1[2]=='x')
+	// if(path1[0]=='/'&&path1[1]=='O'&&path1[2]=='r')
 	// 	dirflag=1;
 	// if(*path1 == '\\' || *path1 != '/' || dirflag){
 	// 	PRINT_FUNC;
@@ -901,7 +900,7 @@ OP_DEFINE(LINK){
 	// 	if(*path1=='\\') path1=path1+1;
 	// 	if(dirflag) path1=path1+3;
 	// 	if(path2=='\\') path2=path2+1;
-	// 	if(path2[0]=='/'&&path2[1]=='x'&&path2[2]=='x') path2=path2+3;
+	// 	if(path2[0]=='/'&&path2[1]=='O'&&path2[2]=='r') path2=path2+3;
 	// 	if(orchfs_link(path1, path2) == -1){
 	// 		if(*p != '\\' && !dirflag){
 	// 			return real_ops.LINK(path1, path2);
@@ -919,7 +918,7 @@ OP_DEFINE(UNLINK){
 	// printf("unlink path=%s\n",path);
 	// fflush(stdout);
 	int dirflag=0;
-	if(path[0]=='/'&&path[1]=='x'&&path[2]=='x')
+	if(path[0]=='/'&&path[1]=='O'&&path[2]=='r')
 		dirflag=1;
 	if(*path == '\\' || *path != '/' || dirflag){
 		PRINT_FUNC;
@@ -973,7 +972,7 @@ OP_DEFINE(READ){
 		if(real_ops.READ == NULL){
 			insert_real_op();
 		}
-		char* buf_char = buf;
+		// char* buf_char = buf;
 		int64_t read_len = real_ops.READ(file, buf, length);
 		// printf("read data: %s\n",buf_char);
 		return read_len;
@@ -1078,7 +1077,7 @@ OP_DEFINE(XSTAT){
 	// printf("xstat path=%s\n",path);
 	// fflush(stdout);
 	int dirflag=0;
-	if(path[0]=='/'&&path[1]=='x'&&path[2]=='x')
+	if(path[0]=='/'&&path[1]=='O'&&path[2]=='r')
 		dirflag=1;
 	if(*path == '\\' || *path != '/' || dirflag){
 		PRINT_FUNC;
@@ -1111,7 +1110,7 @@ OP_DEFINE(STAT){
 	// printf("stat path=%s\n",path);
 	// fflush(stdout);
 	int dirflag=0;
-	if(path[0]=='/'&&path[1]=='x'&&path[2]=='x')
+	if(path[0]=='/'&&path[1]=='O'&&path[2]=='r')
 		dirflag=1;
 	if(*path == '\\' || *path != '/' || dirflag){
 		PRINT_FUNC;
@@ -1142,7 +1141,7 @@ OP_DEFINE(STAT64){
 	// fprintf(stderr,"stat64 path=%s\n",path);
 	// fflush(stdout);
 	int dirflag=0;
-	if(path[0]=='/'&&path[1]=='x'&&path[2]=='x')
+	if(path[0]=='/'&&path[1]=='O'&&path[2]=='r')
 		dirflag=1;
 	if(*path == '\\' || *path != '/' || dirflag){
 		PRINT_FUNC;
@@ -1217,7 +1216,7 @@ OP_DEFINE(LSTAT){
 	// fprintf(stderr,"lstat path=%s\n",path);
 	// fflush(stdout);
 	int dirflag=0;
-	if(path[0]=='/'&&path[1]=='x'&&path[2]=='x')
+	if(path[0]=='/'&&path[1]=='O'&&path[2]=='r')
 		dirflag=1;
 	if(*path == '\\' || *path != '/'){
 		PRINT_FUNC;
@@ -1245,7 +1244,7 @@ OP_DEFINE(RENAME){
 	// printf("oldname=%s newname=%s\n",old,new);
 	// fflush(stdout);
 	int dirflag=0;
-	if(old[0]=='/'&&old[1]=='x'&&old[2]=='x')
+	if(old[0]=='/'&&old[1]=='O'&&old[2]=='r')
 		dirflag=1;
 	if(*old == '\\' || *old != '/' || dirflag){
 		PRINT_FUNC;
@@ -1254,7 +1253,7 @@ OP_DEFINE(RENAME){
 		if(*old=='\\') old=old+1;
 		if(dirflag) old=old+3;
 		if(*new=='\\') new=new+1;
-		if(new[0]=='/'&&new[1]=='x'&&new[2]=='x') new=new+3;
+		if(new[0]=='/'&&new[1]=='O'&&new[2]=='r') new=new+3;
 		//printf("old=%s new=%s\n",old,new);
 		if(orchfs_rename( old, new) == -1)
 		{
@@ -1275,7 +1274,7 @@ OP_DEFINE(MKDIR){
 	// printf("mkdir path=%s mode=%d\n",path,mode);
 	// fflush(stdout);
 	int dirflag=0;
-	if(path[0]=='/'&&path[1]=='x'&&path[2]=='x')
+	if(path[0]=='/'&&path[1]=='O'&&path[2]=='r')
 		dirflag=1;
 	if(*path == '\\' || *path != '/' ||dirflag){
 		// fprintf(stderr,"my mkdir\n");
@@ -1309,7 +1308,7 @@ OP_DEFINE(RMDIR){
 	// printf("rmdir path=%s\n",path);
 	// fflush(stdout);
 	int dirflag=0;
-	if(path[0]=='/'&&path[1]=='x'&&path[2]=='x')
+	if(path[0]=='/'&&path[1]=='O'&&path[2]=='r')
 		dirflag=1;
 	if(*path == '\\' || *path != '/' || dirflag){
 		// PRINT_FUNC;
@@ -1435,7 +1434,7 @@ OP_DEFINE(OPENDIR){
 	// printf("opendir %s\n",path);
 	// fflush(stdout);
 	int dirflag=0;
-	if(path[0]=='/'&&path[1]=='x'&&path[2]=='x')
+	if(path[0]=='/'&&path[1]=='O'&&path[2]=='r')
 		dirflag=1;
 	if(*path == '\\' || *path != '/' || dirflag){
 		// PRINT_FUNC;
@@ -1549,7 +1548,7 @@ OP_DEFINE(FOPEN){
 	// printf("fopen call! %s\n",path);
 	// fflush(stdout);
 	int dirflag=0;
-	if(path[0]=='/'&&path[1]=='x'&&path[2]=='x')
+	if(path[0]=='/'&&path[1]=='O'&&path[2]=='r')
 		dirflag=1;
 	if(*path == '\\' || *path != '/' || dirflag){
 		FILE * ret = NULL;
@@ -1644,7 +1643,6 @@ OP_DEFINE(FCLOSE){
 OP_DEFINE(FSEEK){
 	// printf("fseek call\n");
 	// fflush(stdout);
-	int op = 0;
 	if(fp){
 		if((fp->_flags & _IO_MAGIC_MASK) == _IO_MAGIC_ORCHFS){
 			PRINT_FUNC;
@@ -1691,7 +1689,7 @@ static __attribute__((constructor(100) )) void init_method(void)
 		// orchfs_init(0);
 		// printf("------------ORCHFS init----------------\n");
 		init_libfs();
-		fprintf(stderr,"ORCHFS initialized. \nNow the program begins.\n");
+		fprintf(stderr,"OrchFS initialized. \nNow the program begins.\n");
 		fflush(stdout);
 		return;
 	}
@@ -1702,7 +1700,8 @@ static __attribute__((constructor(100) )) void init_method(void)
 static __attribute__((destructor(101))) void over_method(void)
 {
 	close_libfs();
-	fprintf(stderr,"libFS over %lld\n",all_read_size);
+	// fprintf(stderr,"libFS over %"PRId64"\n",all_read_size);
+	fprintf(stderr,"libFS over\n");
 	fflush(stdout);
 }
 

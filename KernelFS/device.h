@@ -107,4 +107,12 @@ void write_data_to_devs(void* src, int64_t len, int64_t offset);
 
 void shm_write_data_to_devs(void* src, int64_t src_off, int64_t len, int64_t offset);
 
+void write_data_to_nvms_newbaseline(void* src, int64_t len, int64_t offset);
+
+void read_data_from_nvms_newbaseline(void* dst, int64_t len, int64_t offset);
+
+void write_data_to_ssds_newbaseline(void* src, int64_t len, int64_t offset);
+
+void read_data_from_ssds_newbaseline(void* dst, int64_t len, int64_t offset);
+
 #endif

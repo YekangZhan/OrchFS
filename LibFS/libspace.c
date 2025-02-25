@@ -65,7 +65,7 @@ int apply_lib_alloc_ext(int ext_type)
                 fprintf(stderr,"lib alloc blk id error! --- %d %d\n",alloced_blknum,ext_type);
                 for(int j = 0; j < alloced_blknum; j++)
                 {
-                    fprintf(stderr,"%lld ",ret_info_int64_pt[j+2]);
+                    fprintf(stderr,"%"PRId64" ",ret_info_int64_pt[j+2]);
                 }
                 fprintf(stderr,"\n");
                 exit(1);
@@ -298,9 +298,9 @@ int64_t require_inode_id()
 
 int64_t require_index_node_id()
 {
-#ifdef COUNT_ON
-    orch_rt.used_tree_nodes += 1;
-#endif
+// #ifdef COUNT_ON
+//     orch_rt.used_tree_nodes += 1;
+// #endif
     pthread_spin_lock(&(lib_alloc_info[IDXND_EXT].alloc_lock));
     int64_t ret_blkid = require_block(IDXND_EXT);
     pthread_spin_unlock(&(lib_alloc_info[IDXND_EXT].alloc_lock));
@@ -309,9 +309,9 @@ int64_t require_index_node_id()
 
 int64_t require_virindex_node_id()
 {
-#ifdef COUNT_ON
-    orch_rt.used_vir_nodes += 1;
-#endif
+// #ifdef COUNT_ON
+//     orch_rt.used_vir_nodes += 1;
+// #endif
     pthread_spin_lock(&(lib_alloc_info[VIRND_EXT].alloc_lock));
     int64_t ret_blkid = require_block(VIRND_EXT);
     pthread_spin_unlock(&(lib_alloc_info[VIRND_EXT].alloc_lock));
@@ -320,9 +320,9 @@ int64_t require_virindex_node_id()
 
 int64_t require_buffer_metadata_id()
 {
-#ifdef COUNT_ON
-    orch_rt.used_pm_units += 1;
-#endif
+// #ifdef COUNT_ON
+//     orch_rt.used_pm_units += 1;
+// #endif
     pthread_spin_lock(&(lib_alloc_info[BUFMETA_EXT].alloc_lock));
     int64_t ret_blkid = require_block(BUFMETA_EXT);
     pthread_spin_unlock(&(lib_alloc_info[BUFMETA_EXT].alloc_lock));
@@ -331,9 +331,9 @@ int64_t require_buffer_metadata_id()
 
 int64_t require_nvm_page_id()
 {
-#ifdef COUNT_ON
-    orch_rt.used_pm_pages += 1;
-#endif
+// #ifdef COUNT_ON
+//     orch_rt.used_pm_pages += 1;
+// #endif
     pthread_spin_lock(&(lib_alloc_info[PAGE_EXT].alloc_lock));
     int64_t ret_blkid = require_block(PAGE_EXT);
     // if(ret_blkid < 10)
@@ -344,9 +344,9 @@ int64_t require_nvm_page_id()
 
 int64_t require_ssd_block_id()
 {
-#ifdef COUNT_ON
-    orch_rt.used_ssd_blks += 1;
-#endif
+// #ifdef COUNT_ON
+//     orch_rt.used_ssd_blks += 1;
+// #endif
     pthread_spin_lock(&(lib_alloc_info[BLOCK_EXT].alloc_lock));
     int64_t ret_blkid = require_block(BLOCK_EXT);
     pthread_spin_unlock(&(lib_alloc_info[BLOCK_EXT].alloc_lock));

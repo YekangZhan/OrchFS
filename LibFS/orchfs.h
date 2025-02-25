@@ -75,6 +75,8 @@ DIR* orchfs_opendir(const char *_pathname);
 
 int orchfs_closedir(DIR *dirp);
 
+int orchfs_truncate(const char *path, size_t length);
+
 int orchfs_rename(const char *oldpath, const char *newpath);
 
 int orchfs_fcntl(int fd, int cmd, ...);

@@ -158,7 +158,7 @@ int call_dealloc_func(int64_t func_type, void* para_space)
     int64_t* para_int64_pt = (int64_t*)para_space;
     int64_t dealloc_blk_num = para_int64_pt[0];
     int64_t opblk_type = para_int64_pt[1];
-	int64_t reg_pid = para_int64_pt[2];
+	// int64_t reg_pid = para_int64_pt[2];
 	int64_t* blk_start_pt = (int64_t*)((int64_t)para_space + sizeof(int64_t)*3);
 	// printf("blk_type: %" PRId64" %" PRId64"  %" PRId64"\n",func_type, dealloc_blk_num, reg_pid);
 	// for(int i = 0; i < dealloc_blk_num; i++)
@@ -222,9 +222,6 @@ int call_log_func(int64_t func_type, void* para_space)
 	return 0;
 func_type_error:
 	printf("The func type is error!\n");
-	return -1;
-message_error:
-	printf("The message structure is error!\n");
 	return -1;
 }
 

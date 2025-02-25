@@ -142,7 +142,7 @@ int lib_recv_message(int64_t port, void* recv_buf, int recv_info_len)
     }
     if(pos == -1)
     {
-        printf("error port: %lld\n",port);
+        fprintf(stderr, "error port: %lld\n",port);
         fflush(stdout);
         goto port_error;
     }

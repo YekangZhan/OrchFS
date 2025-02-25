@@ -100,24 +100,28 @@ typedef orchfs_rt_t* orchfs_rt_pt;
 
 orchfs_rt_t orch_rt;
 
-static void bitlock_acquire(bit_lock_t* bitlock, int lock_pos)
-{
-    uint64_t * target = bitlock + (lock_pos / 64);
-    uint64_t offset = lock_pos % 64;
-    while((((uint64_t)0b01 << offset) & __sync_fetch_and_or(target, (uint64_t)0b01 << offset)) != 0){
-        // pthread_yield();
-    }
-}
+void bitlock_acquire(bit_lock_t* bitlock, int lock_pos);
+// static void bitlock_acquire(bit_lock_t* bitlock, int lock_pos)
+// {
+//     uint64_t * target = bitlock + (lock_pos / 64);
+//     uint64_t offset = lock_pos % 64;
+//     while((((uint64_t)0b01 << offset) & __sync_fetch_and_or(target, (uint64_t)0b01 << offset)) != 0){
+//         // pthread_yield();
+//     }
+// }
 
-static void bitlock_release(bit_lock_t* bitlock, int unlock_pos)
-{
-    FETCH_AND_unSET_BIT(bitlock, unlock_pos);
-}
+void bitlock_release(bit_lock_t* bitlock, int unlock_pos);
+// static void bitlock_release(bit_lock_t* bitlock, int unlock_pos)
+// {
+//     FETCH_AND_unSET_BIT(bitlock, unlock_pos);
+// }
 
-static void orch_time_stamp(struct timespec * time)
-{
-    clock_gettime(CLOCK_REALTIME, time);
-}
+
+void orch_time_stamp(struct timespec * time);
+// static void orch_time_stamp(struct timespec * time)
+// {
+//     clock_gettime(CLOCK_REALTIME, time);
+// }
 
 
 void init_runtime_info();
@@ -136,17 +140,20 @@ void file_lock_wrlock(int fd);
 void file_lock_unlock(int fd);
 
 
-static void reqlock_lock()
-{
-    pthread_spin_lock(&(orch_rt.req_kernel_lock));
-    // printf("lock\n");
-}
+// static void reqlock_lock()
+// {
+//     pthread_spin_lock(&(orch_rt.req_kernel_lock));
+//     // printf("lock\n");
+// }
 
-static void reqlock_unlock()
-{
-    pthread_spin_unlock(&(orch_rt.req_kernel_lock));
-    // printf("unlock\n");
-}
+void reqlock_lock();
+void reqlock_unlock();
+
+// static void reqlock_unlock()
+// {
+//     pthread_spin_unlock(&(orch_rt.req_kernel_lock));
+//     // printf("unlock\n");
+// }
 
 
 

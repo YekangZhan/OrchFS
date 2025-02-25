@@ -106,9 +106,9 @@ root_id_t create_index_with_page(int64_t inode_id, nvm_page_id_t page_id)
 alloc_error:
     printf("root create error!\n");
     exit(0);
-cache_error:
-    printf("root cache create error!\n");
-    exit(0);
+// cache_error:
+//     printf("root cache create error!\n");
+//     exit(0);
 }
 
 

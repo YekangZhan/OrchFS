@@ -5,8 +5,10 @@
 #include "migrate.h"
 #include "meta_cache.h"
 #include "runtime.h"
+#include "libspace.h"
 
 #include "../util/LRU.h"
+#include "../KernelFS/device.h"
 #include "../config/config.h"
 
 migrate_info_pt init_migrate_info()
@@ -27,7 +29,7 @@ migrate_info_pt init_migrate_info()
 
     ret_pt->all_mig_blk = 0;
     ret_pt->max_page_use = 0;
-    fprintf(stderr,"mig_threshold %lld %lld\n",ret_pt->mig_threshold,ret_pt->migrate_num);
+    // fprintf(stderr,"mig_threshold %"PRId64" %"PRId64"\n",ret_pt->mig_threshold,ret_pt->migrate_num);
 
     return ret_pt;
 }
@@ -115,7 +117,7 @@ void* wait_and_exec_migrate(void* para_arg)
 {
     mig_pth_frame_pt arg = (mig_pth_frame_pt)para_arg;
 	io_pth_pool_pt pool = arg->pool;
-	int nowtid = arg->tid;
+	// int nowtid = arg->tid;
     migrate_info_pt mig_info = arg->mig_info_pt;
     // fprintf(stderr,"mig_info->migrate_num: %d %lld\n",nowtid,mig_info->migrate_num);
 	while(1)
@@ -138,6 +140,7 @@ void* wait_and_exec_migrate(void* para_arg)
         }
         __sync_fetch_and_and(&(mig_info->mig_state), SLEEP);
     }
+    return NULL;
 }
 
 void add_migrate_node(migrate_info_pt mig_info, struct offset_info_t* off_info, 
@@ -152,6 +155,7 @@ void add_migrate_node(migrate_info_pt mig_info, struct offset_info_t* off_info,
     // fprintf(stderr,"offans: %lld %lld\n",ino_id,off_info->offset_ans);
     int ret = add_LRU_node(mig_info->LRU_info, key, &new_LRU_node, sizeof(LRU_node_info_t));
     // fprintf(stderr,"ret: %d\n",ret);
+    assert(ret == LRU_FULL || ret == LRU_NOT_FULL);
     __sync_fetch_and_add(&(mig_info->nvm_page_used), new_page_num);
     if(mig_info->nvm_page_used > mig_info->max_page_use)
         mig_info->max_page_use = mig_info->nvm_page_used;
@@ -169,8 +173,8 @@ void add_migrate_node(migrate_info_pt mig_info, struct offset_info_t* off_info,
 
 void free_migrate_info(migrate_info_pt mig_info_pt)
 {
-    fprintf(stderr,"all mig num: %lld\n",mig_info_pt->all_mig_blk);
-    fprintf(stderr,"max page num: %lld\n",mig_info_pt->max_page_use);
+    fprintf(stderr,"all mig num: %"PRId64"\n",mig_info_pt->all_mig_blk);
+    fprintf(stderr,"max page num: %"PRId64"\n",mig_info_pt->max_page_use);
     free_LRU_module(mig_info_pt->LRU_info);
     free(mig_info_pt);
 }

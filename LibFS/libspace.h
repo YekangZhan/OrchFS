@@ -19,11 +19,11 @@
 
 // max block per extent
 #define MAX_INODE_EXT_SIZE           256
-#define MAX_IDXND_EXT_SIZE           (1024*2)
-#define MAX_VIRND_EXT_SIZE           (1024*4)
-#define MAX_BUFMETA_EXT_SIZE         (1024*2)
-#define MAX_PAGE_EXT_SIZE            (1024*15)
-#define MAX_BLOCK_EXT_SIZE           (1024*15)
+#define MAX_IDXND_EXT_SIZE           (1024*1)
+#define MAX_VIRND_EXT_SIZE           (1024*1)
+#define MAX_BUFMETA_EXT_SIZE         (1024*1)
+#define MAX_PAGE_EXT_SIZE            (1024*4)
+#define MAX_BLOCK_EXT_SIZE           (1024*4)
 
 #define MAX_DEALLOC_BLK              1024
 

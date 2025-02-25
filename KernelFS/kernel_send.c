@@ -67,10 +67,11 @@ int find_port_pos(int64_t port)
 {
     for(int i = 0; i < MAX_PORT_NUM; i++)
     {
+        // printf("find_port_pos %lld %lld\n", ksend_port[i].port_num, port);
         if(ksend_port[i].used_flag == KWORK_USED && ksend_port[i].port_num == port)
             return i;
     }
-    printf("The port is error!\n");
+    printf("The port is error! -- find_port_pos %lld \n", port);
     exit(1);
 }
 

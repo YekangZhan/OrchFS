@@ -56,9 +56,9 @@ void init_metadata_cache()
     }
     // fprintf(stderr,"virnd create!\n");
     return;
-mem_error:
-    printf("malloc error! -- init_metadata_memory\n");
-    exit(0);
+// mem_error:
+//     printf("malloc error! -- init_metadata_memory\n");
+//     exit(0);
 }
 
 void sync_inode(int64_t inode_id)
@@ -147,13 +147,13 @@ void close_metadata_cache()
         free(cache_data[i].sync_flist);
         // fprintf(stderr,"lock %d %lld %lld\n",i,this_seg_num,cache_data[i].seg_lock_pt);
         if(cache_data[i].seg_lock_pt != NULL)
-            free(cache_data[i].seg_lock_pt);
+            free((void*)cache_data[i].seg_lock_pt);
         else
         {
             fprintf(stderr,"lock structure error1!\n");
             exit(0);
         }
-        fprintf(stderr,"%d %lld %lld\n",i,this_seg_num,cache_data[i].meta_memsp_pt);
+        // fprintf(stderr,"%d %"PRId64" %"PRId64"\n",i,this_seg_num,cache_data[i].meta_memsp_pt);
         if(cache_data[i].meta_memsp_pt != NULL)
             free(cache_data[i].meta_memsp_pt);
         else
@@ -169,7 +169,7 @@ void close_metadata_cache()
 void create_file_metadata_cache(int64_t inode_id)
 {
     int64_t seg_id = inode_id / INODE_CACHE_EXTBLKS;
-    int64_t seg_pos = inode_id % INODE_CACHE_EXTBLKS;
+    // int64_t seg_pos = inode_id % INODE_CACHE_EXTBLKS;
     assert(seg_id < cache_data[INODE_CACHE].seg_num);
     pthread_spin_lock(cache_data[INODE_CACHE].seg_lock_pt + seg_id);
     if(cache_data[INODE_CACHE].meta_memsp_pt[seg_id] == NULL)
@@ -186,7 +186,7 @@ void create_file_metadata_cache(int64_t inode_id)
     }
     pthread_spin_unlock(cache_data[INODE_CACHE].seg_lock_pt + seg_id);
     // fprintf(stderr,"addr: %lld\n",cache_data[INODE_CACHE].meta_memsp_pt[seg_id]);
-    void* target_pt = cache_data[INODE_CACHE].meta_memsp_pt[seg_id] + seg_pos*ORCH_INODE_SIZE;
+    // void* target_pt = cache_data[INODE_CACHE].meta_memsp_pt[seg_id] + seg_pos*ORCH_INODE_SIZE;
     cache_data[INODE_CACHE].sync_flist[seg_id] = 1;
     // memset(target_pt, 0x00, ORCH_INODE_SIZE);
     return;
@@ -237,7 +237,7 @@ void* indexid_to_memaddr(int64_t inodeid, int64_t indexid, int create_flag)
     int64_t seg_pos = indexid % IDXND_CACHE_EXTBLKS;
     if(seg_id >= cache_data[IDXND_CACHE].seg_num)
     {
-        printf("seg_id: %lld %lld %lld\n",indexid ,inodeid, cache_data[IDXND_CACHE].seg_num);
+        printf("seg_id: %"PRId64" %"PRId64" %"PRId64"\n",indexid ,inodeid, cache_data[IDXND_CACHE].seg_num);
         fflush(stdout);
         goto id_error;
     }

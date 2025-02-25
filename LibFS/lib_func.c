@@ -178,37 +178,37 @@ too_many_open_files:
 
 int orchfs_close(int fd)
 {
-#ifdef COUNT_ON
-	printf("used_pm_pages: %lld\n",orch_rt.used_pm_pages-orch_rt.used_pm_units);
-	printf("used_pm_units: %lld\n",orch_rt.used_pm_units);
-	printf("used_ssd_blks: %lld\n",orch_rt.used_ssd_blks);
-	printf("used_tree_node: %lld\n",orch_rt.used_tree_nodes);
-	printf("used_vir_node: %lld\n",orch_rt.used_vir_nodes);
-	printf("write back time: %lld\n",orch_rt.wback_num);
-	orch_rt.used_pm_pages = 0;
-    orch_rt.used_pm_units = 0;
-    orch_rt.used_ssd_blks = 0;
-    orch_rt.used_tree_nodes = 0;
-	orch_rt.used_vir_nodes = 0;
-	orch_rt.wback_num = 0;
-#endif
+// #ifdef COUNT_ON
+// 	printf("used_pm_pages: %"PRId64"\n",orch_rt.used_pm_pages-orch_rt.used_pm_units);
+// 	printf("used_pm_units: %"PRId64"\n",orch_rt.used_pm_units);
+// 	printf("used_ssd_blks: %"PRId64"\n",orch_rt.used_ssd_blks);
+// 	printf("used_tree_node: %"PRId64"\n",orch_rt.used_tree_nodes);
+// 	printf("used_vir_node: %"PRId64"\n",orch_rt.used_vir_nodes);
+// 	printf("write back time: %"PRId64"\n",orch_rt.wback_num);
+// 	orch_rt.used_pm_pages = 0;
+//     orch_rt.used_pm_units = 0;
+//     orch_rt.used_ssd_blks = 0;
+//     orch_rt.used_tree_nodes = 0;
+// 	orch_rt.used_vir_nodes = 0;
+// 	orch_rt.wback_num = 0;
+// #endif
 
-#ifdef COUNT_TIME
-	int64_t all_pm_size = orch_rt.pm_unit_rwsize + orch_rt.pm_page_rwsize;
-	printf("index_time: %lld\n",orch_rt.index_time-orch_rt.wback_time);
-	printf("io_time: %lld\n",orch_rt.io_time);
-	printf("pm_unit_time: %.0f\n",(orch_rt.pm_unit_rwsize*1.0 / all_pm_size) * orch_rt.pm_time);
-	printf("pm_page_time: %.0f\n",(orch_rt.pm_page_rwsize*1.0 / all_pm_size) * orch_rt.pm_time);
-	printf("wback_time: %lld\n",orch_rt.wback_time);
-	printf("ssd time: %lld\n",orch_rt.blk_time);
-	orch_rt.index_time = 0;
-    orch_rt.io_time = 0;
-    orch_rt.pm_unit_rwsize = 0;
-    orch_rt.pm_page_rwsize = 0;
-    orch_rt.wback_time = 0;
-    orch_rt.pm_time = 0;
-	orch_rt.blk_time = 0;
-#endif
+// #ifdef COUNT_TIME
+// 	int64_t all_pm_size = orch_rt.pm_unit_rwsize + orch_rt.pm_page_rwsize;
+// 	printf("index_time: %"PRId64"\n",orch_rt.index_time-orch_rt.wback_time);
+// 	printf("io_time: %"PRId64"\n",orch_rt.io_time);
+// 	printf("pm_unit_time: %.0f\n",(orch_rt.pm_unit_rwsize*1.0 / all_pm_size) * orch_rt.pm_time);
+// 	printf("pm_page_time: %.0f\n",(orch_rt.pm_page_rwsize*1.0 / all_pm_size) * orch_rt.pm_time);
+// 	printf("wback_time: %"PRId64"\n",orch_rt.wback_time);
+// 	printf("ssd time: %"PRId64"\n",orch_rt.blk_time);
+// 	orch_rt.index_time = 0;
+//     orch_rt.io_time = 0;
+//     orch_rt.pm_unit_rwsize = 0;
+//     orch_rt.pm_page_rwsize = 0;
+//     orch_rt.wback_time = 0;
+//     orch_rt.pm_time = 0;
+// 	orch_rt.blk_time = 0;
+// #endif
 
 	int64_t now_file_inoid = fd_to_inodeid(fd);
 	if(fd >= ORCH_MAX_FD || now_file_inoid == -1)
@@ -533,7 +533,7 @@ int orchfs_fstat(int fd, struct stat *buf)
     }
      // dax_grant_access(orch_rt.mpk[MPK_DEFAULT]);
 
-    int64_t ino_id = fd_to_inodeid(fd);
+    // int64_t ino_id = fd_to_inodeid(fd);
     orch_inode_pt c = fd_to_inodept(fd);
 
 	pthread_spin_lock(&(c->i_lock));
@@ -639,7 +639,7 @@ struct dirent * orchfs_readdir(DIR *dirp)
 	{
 		return NULL;
 	}
-	ino_t ino_id = fd_to_inodeid(fd);
+	// ino_t ino_id = fd_to_inodeid(fd);
 
 	// 读取目录文件
     int64_t now_dir_fsize = ino_pt->i_size;
@@ -817,6 +817,7 @@ path_diff:
 	exit(0);
 path_error:
 	fprintf(stderr,"The file path is error! --- orchfs_rename\n");
+	exit(0);
 }
 
 int orchfs_fcntl(int fd, int cmd, ...)

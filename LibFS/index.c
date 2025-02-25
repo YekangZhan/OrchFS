@@ -11,6 +11,19 @@
 extern "C"{
 #endif
 
+void bitlock_acquire(bit_lock_t* bitlock, int lock_pos)
+{
+    uint64_t * target = bitlock + (lock_pos / 64);
+    uint64_t offset = lock_pos % 64;
+    while((((uint64_t)0b01 << offset) & __sync_fetch_and_or(target, (uint64_t)0b01 << offset)) != 0){
+        // pthread_yield();
+    }
+}
+void bitlock_release(bit_lock_t* bitlock, int unlock_pos)
+{
+    FETCH_AND_unSET_BIT(bitlock, unlock_pos);
+}
+
 
 void node_init(idx_nd_pt idxnd_spt, int64_t init_zipped_layer, int32_t ntype)
 {

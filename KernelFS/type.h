@@ -98,10 +98,11 @@ extern int now_registered_pid;
 
 int64_t kernel_inode_create(int i_type);
 
-static void korch_time_stamp(struct timespec * time)
-{
-    clock_gettime(CLOCK_REALTIME, time);
-}
+void korch_time_stamp(struct timespec * time);
+// static void korch_time_stamp(struct timespec * time)
+// {
+//     clock_gettime(CLOCK_REALTIME, time);
+// }
 
 
 #endif

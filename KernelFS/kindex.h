@@ -23,13 +23,13 @@
 #define EMPTY_BLKID                   -1
 
 // #define INDEX_LAYER                   6
-// #define LAYER_BITWIDTH                6
-// #define MAX_ZIPPED_LAYER              6
-// #define KEY_LEN                       42
-
-#define LAYER_BITWIDTH                7
-#define MAX_ZIPPED_LAYER              5
+#define LAYER_BITWIDTH                6
+#define MAX_ZIPPED_LAYER              6
 #define KEY_LEN                       42
+
+// #define LAYER_BITWIDTH                7
+// #define MAX_ZIPPED_LAYER              5
+// #define KEY_LEN                       42
 #define NODE_SON_CAPACITY             (1<<LAYER_BITWIDTH)
 #define VLN_SLOT_BITWIDTH             2
 #define VLN_SLOT_SUM                  (1<<VLN_SLOT_BITWIDTH)

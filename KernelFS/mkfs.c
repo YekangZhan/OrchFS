@@ -13,6 +13,11 @@
 
 // #define KERNEL_FUNC_DEBUG
 
+void korch_time_stamp(struct timespec * time)
+{
+    clock_gettime(CLOCK_REALTIME, time);
+}
+
 int64_t kernel_inode_create(int i_type)
 {
 
@@ -88,12 +93,6 @@ void init_root_dir(int64_t dir_ino, int64_t father_dir_ino)
     free(new_dir_pt);
     free(ino_pt);
     return;
-file_type_error:
-    printf("The file type is not dirent file!\n");
-    exit(1);
-dir_open_error:
-    printf("can not get dirent file fd!\n");
-    exit(1);
 }
 
 void init_super_block()

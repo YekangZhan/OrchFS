@@ -12,7 +12,7 @@ void ssd_init()
 {
 	// alignbuf = valloc(MAX_WRITE_SIZE0);
 
-	fs_dev_info.ssd_read_fd = open("/dev/nvme7n1",  O_RDWR | O_SYNC); //
+	fs_dev_info.ssd_read_fd = open(ORCH_DEV_SSD_PATH,  O_RDWR | O_SYNC); //
 	// fs_dev_info.ssd_read_fd = open("/dev/nvme0n1",  O_RDWR | __O_DIRECT); //
     if (fs_dev_info.ssd_read_fd < 0) 
 	{
@@ -20,9 +20,9 @@ void ssd_init()
         exit(1);
     }
 	#ifdef NEWBASELINE
-	fs_dev_info.ssd_write_fd = open("/dev/nvme7n1",  O_RDWR | O_SYNC); //| __O_DIRECT | O_SYNC
+	fs_dev_info.ssd_write_fd = open(ORCH_DEV_SSD_PATH,  O_RDWR | O_SYNC); //| __O_DIRECT | O_SYNC
 	#else
-	fs_dev_info.ssd_write_fd = open("/dev/nvme7n1",  O_RDWR | __O_DIRECT); //
+	fs_dev_info.ssd_write_fd = open(ORCH_DEV_SSD_PATH,  O_RDWR | __O_DIRECT); //
 	#endif
 	
     if (fs_dev_info.ssd_write_fd < 0) 
@@ -42,7 +42,7 @@ void ssd_close()
 
 void* nvm_init(ioctl_init_t* frame)
 {
-    fs_dev_info.nvm_fd = open("/dev/dax0.0", O_RDWR);
+    fs_dev_info.nvm_fd = open(ORCH_DEV_NVM_PATH, O_RDWR);
 	if(fs_dev_info.nvm_fd == -1)
     {
 		printf("nvm init error!\n");
@@ -150,7 +150,7 @@ void ssd_write(void* src, int64_t len, int64_t offset)
 	{
 		int64_t woffset = (start_offset_4k << BW_4KiB);
 		int64_t writenum = pwrite(fs_dev_info.ssd_write_fd, alignbuf, block_sum*SIZE_4KiB, woffset);
-		// assert(writenum == block_sum*SIZE_4KiB);
+		assert(writenum == block_sum*SIZE_4KiB);
 	}
 	free(alignbuf);
 }
@@ -325,12 +325,14 @@ void shm_write_data_to_devs(void* src, int64_t src_off, int64_t len, int64_t off
 void write_data_to_ssds_newbaseline(void* src, int64_t len, int64_t offset)
 {
 	int64_t writenum = pwrite(fs_dev_info.ssd_write_fd, src, len, offset);
+	assert(writenum == len);
 	return;
 }
 
 void read_data_from_ssds_newbaseline(void* dst, int64_t len, int64_t offset)
 {
 	int64_t readnum = pread(fs_dev_info.ssd_read_fd, dst, len, offset);
+	assert(readnum == len);
 	return;
 }
 

@@ -41,7 +41,6 @@ int find_empty_shm_unit()
         }
     }
     pthread_spin_unlock(&(lib_shm_info.used_info_lock));
-use_info_error:
     printf("shm use info error!\n");
     exit(0);
 }
@@ -52,7 +51,7 @@ void sendreq_by_shm(void* para_sp_pt, int para_len, void* data_pt, int data_len)
     shm_sp_pt shm_pt = lib_shm_info.libsp_shm_pt;
     // printf("unit_id %d\n",unit_id);
 
-    int64_t* para_int64_pt = (int64_t*)para_sp_pt;
+    // int64_t* para_int64_pt = (int64_t*)para_sp_pt;
     if(data_pt != NULL)
     {
         int64_t sp_offset = shm_pt->req_unit[unit_id].align_4k_off;
@@ -87,7 +86,7 @@ int sendreq_and_recv_by_shm(void* para_sp_pt, int para_len, void* data_pt, int d
     if(para_sp_pt == NULL)
         goto para_sp_error;
     memcpy(shm_pt->req_unit[unit_id].req_para_sp, para_sp_pt, para_len);
-    int64_t* para_int64_pt = (int64_t*)para_sp_pt;
+    // int64_t* para_int64_pt = (int64_t*)para_sp_pt;
     if(data_pt != NULL)
     {
         int64_t sp_offset = shm_pt->req_unit[unit_id].align_4k_off;
