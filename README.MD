@@ -48,7 +48,7 @@ make
 ```
 ### Test examples:
 
-3. Example of Micro-benchmark
+1. Example of Micro-benchmark
 ```
 cd scripts
 cd micro
@@ -57,7 +57,7 @@ sudo sh run_micro.sh
 This test is used to test the performance of Sequential write and random write.
 During runtime, it is necessary to ensure that all test files are in the directory `/Or`, otherwise these files will not be processed by OrchFS.
 
-4. Example of filebench
+2. Example of filebench
 ```
 sh compile_filebench.sh
 cd scripts
