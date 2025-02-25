@@ -48,6 +48,14 @@ make
 ```
 
 3. Example of Micro-benchmark
+```
+cd scripts
+cd micro
+sudo sh run_micro.sh
+```
+This test is used to test the performance of Sequential write and random write.
+During runtime, it is necessary to ensure that all test files are in the directory `/Or`, otherwise these files will not be processed by OrchFS.
+
 4. Example of filebench
 ```
 sh compile_filebench.sh
@@ -55,6 +63,8 @@ cd scripts
 cd filebench
 sudo sh run_filebench.sh
 ```
+This test is used to test the performance of `varmail` workload.
+
 Before running Filebench, we must modify the path in the workload file. Specifically, Find 'set $dir=[path]' and modify it to 'set $dir=/Or'. 
 Examples can be found in `./filebench/workloads/varmail.f` 
 
@@ -64,5 +74,7 @@ We will continue to maintain this repository.
 
 TODO: 
 
-- We are preparing user-friendly test code samples and automated testing scripts.
+- We are preparing more user-friendly test code samples and more automated testing scripts.
 - We are enhancing the readability and modularity of the code to make it more developer-friendly.
+- We will provide a method on how to write our own test program to test OrchFS.
+- Add comments and fix potential bugs.

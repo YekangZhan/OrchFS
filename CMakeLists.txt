@@ -56,3 +56,17 @@ add_custom_target(run_close_kfs
 DEPENDS close_kfs
 COMMAND close_kfs
 )
+
+add_executable(paralleltest2-ComFS test/paralleltest2-ComFS.c)
+TARGET_LINK_LIBRARIES(paralleltest2-ComFS -pthread ) #${ProjectName}
+add_custom_target(run_paralleltest2-ComFS
+DEPENDS paralleltest2-ComFS
+COMMAND paralleltest2-ComFS
+)
+
+add_executable(paralleltest3-ComFS test/paralleltest3-ComFS.c)
+TARGET_LINK_LIBRARIES(paralleltest3-ComFS -pthread ) #${ProjectName}
+add_custom_target(run_paralleltest3-ComFS
+DEPENDS paralleltest3-ComFS
+COMMAND paralleltest3-ComFS
+)
