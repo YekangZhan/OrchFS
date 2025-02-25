@@ -10,20 +10,20 @@ extern "C"{
   file system called Strata (SOSP 17).*/
 
 // kernelFS receive port
-#define ALLOC_OP_PORT                  40010
-#define DEALLOC_OP_PORT                40011
-#define LOG_OP_PORT                    40012
-#define CACHE_OP_PORT                  40013
-#define REGISTER_PORT                  40014
+#define ALLOC_OP_PORT                  40711
+#define DEALLOC_OP_PORT                40712
+#define LOG_OP_PORT                    40713
+#define CACHE_OP_PORT                  40714
+#define REGISTER_PORT                  40715
 
 #define CLOSE_FS_PORT                  30000
 #define CLOSE_FS_MESSAGE               0x3678268   
 
 // libFS receive port
-#define RECV_BLK_PORT                  30110
-#define RECV_LOG_SP_PORT               30210
-#define RECV_CACHE_PORT                30310
-#define RECV_PID_PORT                  30510
+#define RECV_BLK_PORT                  30010
+#define RECV_LOG_SP_PORT               30020
+#define RECV_CACHE_PORT                30030
+#define RECV_PID_PORT                  30040
 #define LIB_RECV_POER_NUM              4
 
 // port type

@@ -36,7 +36,7 @@ extern "C"{
 // block size
 #define ORCH_SUPER_BLK_SIZE             512LL
 #define ORCH_INODE_SIZE                 512LL
-#define ORCH_IDX_SIZE                   1024LL
+#define ORCH_IDX_SIZE                   2048LL
 #define ORCH_VIRND_SIZE                 256LL
 #define ORCH_BUFMETA_SIZE               128LL
 #define ORCH_PAGE_SIZE                  ((int64_t) 1 << BW_4KiB)
@@ -86,32 +86,32 @@ extern "C"{
 
 
 // device
-#define ORCH_DEV_NVM_PATH     "/dev/dax0.0"
-#define ORCH_DEV_SSD_PATH     "/dev/nvme12n1"
+#define ORCH_DEV_NVM_PATH               "/dev/dax"
+#define ORCH_DEV_SSD_PATH               "/dev/nvme"
 
 // threads
-#define ORCH_CONFIG_NVMTHD     5
-#define ORCH_CONFIG_SSDTHD     32
+#define ORCH_CONFIG_NVMTHD              5
+#define ORCH_CONFIG_SSDTHD              32
 
 // SPLIT
-#define ORCH_MAX_SPLIT_BLK     1
+#define ORCH_MAX_SPLIT_BLK              1             
 
 #define ORCH_INODE_BITLOCK_SLOTS        65536
 #define ORCH_INODE_RW_SLOTS			    65536
-// #define ORCH_MAX_NAME				    231
+#define ORCH_MAX_NAME				    231
 #define ORCH_MAGIC_NAME            	    "ComFS_v1.0"
 #define ORCH_MAGIC_NUM            	    0x37356217
 
 #define ORCH_FAILSAFE_NFRAMES		    32
 
-#define FILEBENCH
+// #define FILEBENCH
 // #define SSD_NOT_PARALLEL
 #ifdef FILEBENCH
     // pass
 #else
     // #define MIGRATTE_ON
     #define COUNT_ON
-    // #define COUNT_TIME
+    #define COUNT_TIME
 #endif
 
 #define PAGE_SHIFT				    12
