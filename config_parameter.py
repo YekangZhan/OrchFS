@@ -1,4 +1,5 @@
 import sys
+import os
 
 def change_parameter(para_list, split_blk, fb_flag):
     # 获取参数
@@ -45,12 +46,81 @@ def change_parameter(para_list, split_blk, fb_flag):
         file.writelines(config_lines)
         
 
-def check_argv(para_list):
-    nvm_dev_name = para_list[1]
-    ssd_dev_name = para_list[2]
-    print(nvm_dev_name, ssd_dev_name)
+def print_argv(para_list):
+    print("Byte addressing device file path:",para_list[1])
+    print("Block addressing device file path:",para_list[2])
+    print("Maximum number of write threads for Byte addressing device:",para_list[3])
+    print("Maximum number of write threads for Block addressing device:",para_list[4])
 
-if __name__ == '__main__':    
-    # 配置设备
-    change_parameter(sys.argv, 1, False)
-    check_argv(sys.argv)
+def get_split_blks(size_str):
+    split_blk = 1
+    size_unit = size_str[-1]
+    size_num = size_str[:-1]
+    if size_unit != 'k' and size_unit != 'K':
+        print("error: Format error in the split granularity grid of parallel IO engine")
+        print("Enable default split granularity of 32KB")
+        return split_blk
+    if size_num.isdigit() == False:
+        print("error: Format error in the split granularity grid of parallel IO engine")
+        print("Enable default split granularity of 32KB")
+        return split_blk
+    if int(size_num) <= 0 or int(size_num) % 32 != 0:
+        print("error: The splitting granularity must be a multiple of 32KB")
+        print("Enable default split granularity of 32KB")
+        return split_blk
+    
+    split_blk = int(size_num) // 32
+    return split_blk
+
+def check_filebench(fb_flag):
+    if fb_flag == 'fb_mode_on':
+        return True
+    else:
+        return False
+
+def check_dev_file_exist(nvm_dev_file, ssd_dev_file):
+    if os.path.exists(nvm_dev_file) and os.path.exists(ssd_dev_file):
+        return True
+    else:
+        print(nvm_dev_file, "or", ssd_dev_file, "do not exist")
+        return False
+
+def check_threads(max_nvm_threads, max_ssd_threads):
+    if max_nvm_threads.isdigit() == False or max_ssd_threads.isdigit() == False:
+        print("The number of threads is error")
+        return False
+    if int(max_nvm_threads) <= 0 or int(max_ssd_threads) <= 0:
+        print("The number of threads cannot be negative")
+        return False
+    return True
+
+if __name__ == '__main__': 
+    # 输出基本参数
+    print_argv(sys.argv)
+
+    # 检查设备文件
+    ret = check_dev_file_exist(sys.argv[1], sys.argv[2])
+    if ret == False:
+        sys.exit()
+    
+    # 检查线程数
+    ret = check_threads(sys.argv[3], sys.argv[4])
+    if ret == False:
+        sys.exit()
+
+    # 检查拆分粒度
+    split_blk = get_split_blks(sys.argv[5])
+    print("split granularity:", split_blk*32, "KB")
+
+    # 检查是否启用filebench标志
+    num_arg = len(sys.argv) - 1
+    fb_flag = False
+    if num_arg > 6:
+        fb_flag = check_filebench(sys.argv[6])
+        if fb_flag == True:
+            print("Filebench mode on\n")
+    else:
+        print("Filebench mode off\n")
+
+    # 改变参数
+    change_parameter(sys.argv, split_blk, fb_flag)
