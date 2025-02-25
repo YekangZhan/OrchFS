@@ -1,0 +1,51 @@
+now port: 30570
+lib_register_pid begin
+lib_register_pid: 0
+now port: 30160
+now port: 30260
+now port: 30360
+ComFS initialized. 
+Now the program begins.
+Filebench Version 1.5-alpha3
+0.000: Allocated 177MB of shared memory
+0.001: File-server Version 3.0 personality successfully loaded
+0.001: Populating and pre-allocating filesets
+0.007: bigfileset populated: 10000 files, avg. dir. width = 100, avg. dir. depth = 2.0, 0 leafdirs, 2461.306MB total size
+0.008: Removing bigfileset tree (if exists)
+0.008: Pre-allocating directories in bigfileset tree
+Pre-allocating 1063
+Pre-allocating 1065
+0.016: Pre-allocating files in bigfileset tree
+1.298: Waiting for pre-allocation to finish (in case of a parallel pre-allocation)
+1.298: Population and pre-allocation of filesets completed
+1.298: Starting 1 filereader instances
+now port: 30570
+lib_register_pid begin
+lib_register_pid: 1
+now port: 30161
+now port: 30261
+now port: 30361
+ComFS initialized. 
+Now the program begins.
+3.327: Running...
+93.333: Run took 90 seconds...
+93.333: Per-Operation Breakdown
+statfile1            478526ops     5317ops/s   0.0mb/s    0.008ms/op [0.003ms - 0.051ms]
+deletefile1          478526ops     5317ops/s   0.0mb/s    0.017ms/op [0.006ms - 3.244ms]
+closefile3           478526ops     5317ops/s   0.0mb/s    0.000ms/op [0.000ms - 0.009ms]
+readfile1            478526ops     5317ops/s 1294.3mb/s    0.015ms/op [0.001ms - 2.367ms]
+openfile2            478526ops     5317ops/s   0.0mb/s    0.009ms/op [0.003ms - 0.094ms]
+closefile2           478526ops     5317ops/s   0.0mb/s    0.000ms/op [0.000ms - 0.015ms]
+appendfilerand1      478526ops     5317ops/s 166.2mb/s    0.020ms/op [0.001ms - 0.704ms]
+openfile1            478526ops     5317ops/s   0.0mb/s    0.011ms/op [0.003ms - 2.499ms]
+closefile1           478526ops     5317ops/s   0.0mb/s    0.000ms/op [0.000ms - 0.011ms]
+wrtfile1             478526ops     5317ops/s 1331.7mb/s    0.073ms/op [0.003ms - 5.374ms]
+createfile1          478527ops     5317ops/s   0.0mb/s    0.033ms/op [0.010ms - 6.983ms]
+93.333: IO Summary: 5263787 ops 58482.835 ops/s 5317/10633 rd/wr 2792.2mb/s 0.017ms/op
+93.333: Shutting down processes
+0 16384 93824993802576
+1 6144 93824994023808
+2 65536 93824994359728
+ret ext!
+ret ext end!
+libFS over 325270784

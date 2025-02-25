@@ -1,0 +1,60 @@
+now port: 30570
+lib_register_pid begin
+lib_register_pid: 0
+now port: 30160
+now port: 30260
+now port: 30360
+ComFS initialized. 
+Now the program begins.
+Filebench Version 1.5-alpha3
+0.000: Allocated 177MB of shared memory
+0.001: Web proxy-server Version 3.0 personality successfully loaded
+0.001: Populating and pre-allocating filesets
+0.005: bigfileset populated: 10000 files, avg. dir. width = 100, avg. dir. depth = 2.0, 0 leafdirs, 20000.000MB total size
+0.005: Removing bigfileset tree (if exists)
+0.005: Pre-allocating directories in bigfileset tree
+Pre-allocating 1063
+Pre-allocating 1065
+0.009: Pre-allocating files in bigfileset tree
+4.525: Waiting for pre-allocation to finish (in case of a parallel pre-allocation)
+4.525: Population and pre-allocation of filesets completed
+4.525: Starting 1 proxycache instances
+now port: 30570
+lib_register_pid begin
+lib_register_pid: 1
+now port: 30161
+now port: 30261
+now port: 30361
+ComFS initialized. 
+Now the program begins.
+6.555: Running...
+66.560: Run took 60 seconds...
+66.561: Per-Operation Breakdown
+limit                0ops        0ops/s   0.0mb/s    0.000ms/op [0.000ms - 0.000ms]
+closefile6           317656ops     5294ops/s   0.0mb/s    0.000ms/op [0.000ms - 0.009ms]
+readfile6            317656ops     5294ops/s 847.3mb/s    0.017ms/op [0.001ms - 4.041ms]
+openfile6            317656ops     5294ops/s   0.0mb/s    0.002ms/op [0.001ms - 0.061ms]
+closefile5           317656ops     5294ops/s   0.0mb/s    0.000ms/op [0.000ms - 0.011ms]
+readfile5            317656ops     5294ops/s 876.3mb/s    0.021ms/op [0.001ms - 1.571ms]
+openfile5            317656ops     5294ops/s   0.0mb/s    0.002ms/op [0.001ms - 0.084ms]
+closefile4           317656ops     5294ops/s   0.0mb/s    0.000ms/op [0.000ms - 0.011ms]
+readfile4            317656ops     5294ops/s 907.3mb/s    0.018ms/op [0.001ms - 4.031ms]
+openfile4            317656ops     5294ops/s   0.0mb/s    0.002ms/op [0.001ms - 0.059ms]
+closefile3           317656ops     5294ops/s   0.0mb/s    0.000ms/op [0.001ms - 0.009ms]
+readfile3            317656ops     5294ops/s 899.8mb/s    0.018ms/op [0.001ms - 1.554ms]
+openfile3            317656ops     5294ops/s   0.0mb/s    0.002ms/op [0.001ms - 1.062ms]
+closefile2           317656ops     5294ops/s   0.0mb/s    0.000ms/op [0.000ms - 0.011ms]
+readfile2            317656ops     5294ops/s 878.4mb/s    0.024ms/op [0.001ms - 2.172ms]
+openfile2            317656ops     5294ops/s   0.0mb/s    0.002ms/op [0.001ms - 0.058ms]
+closefile1           317656ops     5294ops/s   0.0mb/s    0.000ms/op [0.000ms - 0.010ms]
+appendfilerand1      317656ops     5294ops/s 661.9mb/s    0.048ms/op [0.002ms - 1.373ms]
+createfile1          317657ops     5294ops/s   0.0mb/s    0.020ms/op [0.008ms - 1.073ms]
+deletefile1          317657ops     5294ops/s   0.0mb/s    0.008ms/op [0.003ms - 1.213ms]
+66.561: IO Summary: 6035466 ops 100582.871 ops/s 26469/5294 rd/wr 5071.0mb/s 0.010ms/op
+66.561: Shutting down processes
+0 16384 93824993803664
+1 6144 93824994024896
+2 65536 93824994360816
+ret ext!
+ret ext end!
+libFS over 3571456

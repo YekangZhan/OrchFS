@@ -1,0 +1,300 @@
+xxfs	1	256k	SEQREAD	2295.994	114.162	372.774
+xxfs	2	256k	SEQREAD	2422.886	216.377	605.639
+xxfs	4	256k	SEQREAD	3830.993	273.703	729.172
+xxfs	8	256k	SEQREAD	5923.625	354.028	952.606
+xxfs	16	256k	SEQREAD	6929.421	605.286	1816.439
+xxfs	1	128k	SEQREAD	1856.361	141.205	343.517
+xxfs	2	128k	SEQREAD	2316.400	226.331	579.444
+xxfs	4	128k	SEQREAD	3959.349	264.831	578.228
+xxfs	8	128k	SEQREAD	5867.996	357.385	809.191
+xxfs	16	128k	SEQREAD	7107.651	590.106	1536.563
+xxfs	1	256k	SEQREAD	2687.662	97.526	238.010
+xxfs	2	256k	SEQREAD	2348.462	223.236	525.107
+xxfs	4	256k	SEQREAD	2339.467	448.200	816.741
+xxfs	1	256k	SEQREAD	2385.313	109.890	360.091
+xxfs	2	256k	SEQREAD	2332.541	224.762	630.964
+xxfs	4	256k	SEQREAD	3879.467	270.283	715.608
+xxfs	1	256k	SEQREAD	2223.336	117.893	391.495
+xxfs	2	256k	SEQREAD	2373.990	220.834	614.082
+xxfs	4	256k	SEQREAD	3799.721	275.948	737.281
+xxfs	1	256k	SEQREAD	1950.014	134.426	409.121
+xxfs	2	256k	SEQREAD	2353.270	222.781	613.378
+xxfs	1	256k	SEQREAD	6277.019	41.760	140.441
+xxfs	2	256k	SEQREAD	7764.261	67.524	201.792
+xxfs	2	256k	SEQREAD	2142.401	244.715	547.509
+xxfs	4	256k	SEQREAD	3382.507	309.996	632.618
+xxfs	2	256k	SEQREAD	2192.917	239.077	478.016
+xxfs	2	256k	SEQREAD	2171.463	241.440	553.648
+xxfs	4	256k	SEQREAD	3314.673	316.340	650.478
+xxfs	8	256k	SEQREAD	4884.350	429.359	1002.517
+xxfs	8	256k	SEQREAD	4954.106	423.314	971.531
+xxfs	4	256k	SEQREAD	3281.351	319.553	698.262
+xxfs	4	256k	SEQREAD	3299.307	317.814	670.681
+xxfs	4	256k	SEQREAD	3269.752	320.686	685.232
+xxfs	4	256k	SEQREAD	3534.988	296.625	643.079
+xxfs	4	256k	SEQREAD	3320.299	315.804	653.785
+xxfs	4	256k	SEQREAD	3289.394	318.771	678.630
+xxfs	4	256k	SEQREAD	3305.877	317.182	665.742
+xxfs	2	256k	SEQREAD	2197.455	238.584	503.360
+xxfs	4	256k	SEQREAD	3310.750	316.715	667.198
+xxfs	4	256k	SEQREAD	3350.983	312.913	657.750
+xxfs	2	256k	SEQREAD	2353.318	222.777	639.687
+xxfs	4	256k	SEQREAD	3801.154	275.851	731.786
+
+xxfs	2	256k	SEQREAD	2239.329	234.117	654.838
+xxfs	1	256k	SEQREAD	1274.940	205.595	468.899
+
+xxfs	1	256k	SEQREAD	6122.284	42.817	138.921
+xxfs	1	256k	SEQREAD	6773.119	38.702	133.790
+xxfs	1	256k	SEQREAD	6668.837	39.308	135.830
+
+xxfs	1	256k	SEQREAD	3695.740	70.927	127.377
+xxfs	2	256k	SEQREAD	8977.337	58.400	179.054
+
+xxfs	1	256k	SEQREAD	1772.059	147.925	410.891
+xxfs	2	256k	SEQREAD	2577.197	203.428	614.074
+xxfs	1	256k	SEQREAD	816.381	318.407	1435.263
+xxfs	2	256k	SEQREAD	1368.185	381.583	956.902
+xxfs	1	4k	SEQREAD	962.739	4.255	13.120
+index time: 516
+index time: 35669543
+xxfs	1	256k	SEQREAD	1804.060	145.301	408.974
+index time: 540
+index time: 43931222
+xxfs	1	256k	SEQREAD	3934.513	66.621	128.288
+index time: 1114
+index time: 1460518644
+xxfs	1	256k	SEQREAD	3925.178	66.781	125.104
+index time: 1110
+index time: 1096640738
+xxfs	1	256k	SEQREAD	4926.949	53.203	121.285
+index time: 1160
+index time: 1243943631
+xxfs	1	256k	SEQREAD	4561.728	57.461	123.479
+index time: 1150
+index time: 3707599193
+xxfs	1	256k	SEQREAD	1627.695	161.044	418.569
+index time: 0
+index time: 0
+xxfs	1	256k	SEQREAD	1765.648	148.459	407.641
+index time: 0
+index time: 0
+xxfs	1	256k	SEQREAD	2648.558	98.972	183.846
+index time: 0
+index time: 0
+index time: 0
+index time: 0
+xxfs	2	256k	SEQREAD	2358.221	222.311	656.639
+index time: 0
+index time: 0
+index time: 0
+index time: 0
+index time: 0
+index time: 0
+index time: 0
+index time: 0
+xxfs	4	256k	SEQREAD	4015.467	261.124	636.035
+index time: 0
+index time: 0
+index time: 0
+index time: 0
+xxfs	2	256k	SEQREAD	2562.969	204.552	606.797
+index time: 0
+index time: 0
+index time: 0
+index time: 0
+index time: 0
+index time: 0
+index time: 0
+index time: 0
+xxfs	4	256k	SEQREAD	4230.938	247.825	615.415
+exec time: 0
+exec time: 0
+xxfs	1	256k	SEQREAD	1868.287	140.302	405.113
+index time: 507
+exec time: 0
+index time: 36048882
+exec time: 0
+xxfs	1	256k	SEQREAD	1800.456	145.588	407.637
+index time: 119
+exec time: 0
+index time: 1921949
+exec time: 0
+xxfs	1	256k	SEQREAD	1764.642	148.542	422.735
+index time: 0
+exec time: 0
+index time: 0
+exec time: 0
+xxfs	1	256k	SEQREAD	9627.974	27.225	107.708
+index time: 0
+exec time: 0
+index time: 0
+exec time: 0
+xxfs	1	256k	SEQREAD	1757.901	149.112	404.105
+index time: 0
+exec time: 0
+index time: 0
+exec time: 0
+index time: 0
+exec time: 0
+index time: 0
+exec time: 0
+xxfs	2	256k	SEQREAD	2487.844	210.728	625.251
+index time: 0
+exec time: 0
+index time: 0
+exec time: 0
+index time: 0
+exec time: 0
+index time: 0
+exec time: 0
+index time: 0
+exec time: 0
+index time: 0
+exec time: 0
+index time: 0
+exec time: 0
+index time: 0
+exec time: 0
+xxfs	4	256k	SEQREAD	4266.136	245.781	576.277
+index time: 0
+exec time: 0
+index time: 0
+exec time: 0
+index time: 0
+exec time: 0
+index time: 0
+exec time: 0
+xxfs	2	256k	SEQREAD	5594.346	93.712	250.059
+index time: 0
+exec time: 0
+index time: 0
+exec time: 0
+index time: 0
+exec time: 0
+index time: 0
+exec time: 0
+index time: 0
+exec time: 0
+index time: 0
+exec time: 0
+index time: 0
+exec time: 0
+index time: 0
+exec time: 0
+xxfs	4	256k	SEQREAD	12955.893	80.931	238.748
+index time: 0
+exec time: 0
+read data error! -1 327680 229376
+index time: 0
+exec time: 0
+index time: 0
+exec time: 0
+read data error! -1 327680 6040027136
+index time: 0
+exec time: 0
+read data error! -1 327680 229376
+index time: 0
+exec time: 0
+read data! 229376 229376 0
+read data error! -1 327680 229376
+index time: 0
+exec time: 0
+read data! 229376 229376 0
+read data error! 0 -1 327680 229376
+index time: 0
+exec time: 0
+buf_size: 1576960 139928566882304
+read data! 229376 229376 0
+buf_size: 1576960 139928566882304
+read data error! 0 -1 327680 229376
+ssd task: 94843705733200
+index time: 0
+exec time: 0
+ssd task: 140309333805984
+ssd task: 140311513128960
+readtask_info: 1 126701535232 229376 140311513128960
+read data! 229376 229376 0
+ssd task: 140311513128960
+readtask_info: 1 126701764608 327680 140311513140681
+read data error! 0 -1 327680 229376
+index time: 0
+exec time: 0
+index time: 0
+exec time: 0
+xxfs	1	256k	SEQREAD	2051.101	127.797	363.472
+index time: 0
+exec time: 0
+index time: 0
+exec time: 0
+index time: 0
+exec time: 0
+index time: 0
+exec time: 0
+xxfs	2	256k	SEQREAD	3236.340	161.991	402.232
+index time: 0
+exec time: 0
+index time: 0
+exec time: 0
+index time: 0
+exec time: 0
+index time: 0
+exec time: 0
+index time: 0
+exec time: 0
+index time: 0
+exec time: 0
+index time: 0
+exec time: 0
+index time: 0
+exec time: 0
+xxfs	4	256k	SEQREAD	5659.854	185.258	405.724
+index time: 0
+exec time: 0
+index time: 0
+exec time: 0
+xxfs	1	256k	SEQREAD	1822.990	143.788	410.784
+libFS overindex time: 0
+exec time: 0
+index time: 0
+exec time: 0
+index time: 0
+exec time: 0
+index time: 0
+exec time: 0
+xxfs	2	256k	SEQREAD	2685.351	195.229	466.323
+libFS overindex time: 0
+exec time: 0
+index time: 0
+exec time: 0
+index time: 0
+exec time: 0
+index time: 0
+exec time: 0
+index time: 0
+exec time: 0
+index time: 0
+exec time: 0
+index time: 0
+exec time: 0
+index time: 0
+exec time: 0
+xxfs	4	256k	SEQREAD	4419.353	237.260	538.065
+libFS overxxfs	1	256k	SEQREAD	1582.894	165.598	445.921
+libFS overxxfs	2	256k	SEQREAD	2576.428	203.483	497.389
+libFS overxxfs	4	256k	SEQREAD	4711.918	222.528	486.041
+libFS overxxfs	1	256k	SEQREAD	1760.681	148.877	427.014
+will close kernelfs!
+The port is error! -- lib_send_message
+xxfs	1	256k	SEQREAD	1722.364	152.189	447.821
+will close kernelfs!
+The port is error! -- lib_send_message
+xxfs	1	256k	SEQREAD	1738.182	150.804	436.616
+The port is error! -- lib_send_message
+xxfs	1	256k	SEQREAD	1682.313	155.812	435.815
+The port is error! -- lib_send_message
+xxfs	1	256k	SEQREAD	1772.968	147.845	433.069
+The port is error! -- lib_send_message
+xxfs	1	256k	SEQREAD	1650.861	158.780	442.203
+xxfs	2	256k	SEQREAD	2498.584	209.822	514.119
+xxfs	2	256k	SEQREAD	2547.714	205.776	499.534

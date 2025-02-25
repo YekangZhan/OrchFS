@@ -1,0 +1,105 @@
+ComFS initialized. 
+Now the program begins.
+Filebench Version 1.5-alpha3
+0.000: Allocated 177MB of shared memory
+0.001: File-server Version 3.0 personality successfully loaded
+0.001: Populating and pre-allocating filesets
+0.001: bigfileset populated: 100 files, avg. dir. width = 100, avg. dir. depth = 1.0, 0 leafdirs, 23.953MB total size
+0.001: Removing bigfileset tree (if exists)
+0.001: Pre-allocating directories in bigfileset tree
+Pre-allocating 1063
+Pre-allocating 1065
+fileset_create_subdirs 213 filesetpath=/xx/bigfileset
+fileset_create_subdirs 220
+fileset_create_subdirs part_path=/00000003
+fileset_create_subdirs full_path=/xx/bigfileset/00000003
+fileset_create_subdirs 223
+fileset_mkdir path=/xx/bigfileset/00000003
+fileset_mkdir 150 p=/xx/bigfileset/00000003
+fileset_mkdir 175
+fileset_mkdir 177 p=/xx/bigfileset
+fileset_mkdir 175
+fileset_mkdir 177 p=/xx
+fileset_mkdir 175
+fileset_mkdir 177 p=/
+fileset_mkdir 161
+fileset_mkdir 183 i=2 dirs[i]=/xx
+mkdir error
+fileset_mkdir 185 i=2 dirs[i]=/xx
+fileset_mkdir 183 i=1 dirs[i]=/xx/bigfileset
+fileset_mkdir 185 i=1 dirs[i]=/xx/bigfileset
+fileset_mkdir 183 i=0 dirs[i]=/xx/bigfileset/00000003
+fileset_mkdir 185 i=0 dirs[i]=/xx/bigfileset/00000003
+fileset_mkdir 186 p=/
+fileset_mkdir 187
+fileset_create_subdirs 227
+fileset_create_subdirs 220
+fileset_create_subdirs part_path=/00000002
+fileset_create_subdirs full_path=/xx/bigfileset/00000002
+fileset_create_subdirs 223
+fileset_mkdir path=/xx/bigfileset/00000002
+fileset_mkdir 150 p=/xx/bigfileset/00000002
+fileset_mkdir 175
+fileset_mkdir 177 p=/xx/bigfileset
+fileset_mkdir 175
+fileset_mkdir 177 p=/xx
+fileset_mkdir 175
+fileset_mkdir 177 p=/
+fileset_mkdir 161
+fileset_mkdir 183 i=2 dirs[i]=/xx
+mkdir error
+fileset_mkdir 185 i=2 dirs[i]=/xx
+fileset_mkdir 183 i=1 dirs[i]=/xx/bigfileset
+fileset_mkdir 185 i=1 dirs[i]=/xx/bigfileset
+fileset_mkdir 183 i=0 dirs[i]=/xx/bigfileset/00000002
+fileset_mkdir 185 i=0 dirs[i]=/xx/bigfileset/00000002
+fileset_mkdir 186 p=/
+fileset_mkdir 187
+fileset_create_subdirs 227
+fileset_create_subdirs 220
+fileset_create_subdirs part_path=/00000001
+fileset_create_subdirs full_path=/xx/bigfileset/00000001
+fileset_create_subdirs 223
+fileset_mkdir path=/xx/bigfileset/00000001
+fileset_mkdir 150 p=/xx/bigfileset/00000001
+fileset_mkdir 175
+fileset_mkdir 177 p=/xx/bigfileset
+fileset_mkdir 175
+fileset_mkdir 177 p=/xx
+fileset_mkdir 175
+fileset_mkdir 177 p=/
+fileset_mkdir 161
+fileset_mkdir 183 i=2 dirs[i]=/xx
+mkdir error
+fileset_mkdir 185 i=2 dirs[i]=/xx
+fileset_mkdir 183 i=1 dirs[i]=/xx/bigfileset
+fileset_mkdir 185 i=1 dirs[i]=/xx/bigfileset
+fileset_mkdir 183 i=0 dirs[i]=/xx/bigfileset/00000001
+fileset_mkdir 185 i=0 dirs[i]=/xx/bigfileset/00000001
+fileset_mkdir 186 p=/
+fileset_mkdir 187
+fileset_create_subdirs 227
+fileset_create_subdirs 220
+fileset_create_subdirs part_path=
+fileset_create_subdirs full_path=/xx/bigfileset
+fileset_create_subdirs 223
+fileset_mkdir path=/xx/bigfileset
+fileset_mkdir 150 p=/xx/bigfileset
+fileset_mkdir 175
+fileset_mkdir 177 p=/xx
+fileset_mkdir 175
+fileset_mkdir 177 p=/
+fileset_mkdir 161
+fileset_mkdir 183 i=1 dirs[i]=/xx
+mkdir error
+fileset_mkdir 185 i=1 dirs[i]=/xx
+fileset_mkdir 183 i=0 dirs[i]=/xx/bigfileset
+fileset_mkdir 185 i=0 dirs[i]=/xx/bigfileset
+fileset_mkdir 186 p=/
+fileset_mkdir 187
+fileset_create_subdirs 227
+0.002: Pre-allocating files in bigfileset tree
+0.021: Waiting for pre-allocation to finish (in case of a parallel pre-allocation)
+0.021: Population and pre-allocation of filesets completed
+0.021: Starting 1 filereader instances
+bind socket error: Address already in use(errno: 98)

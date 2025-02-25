@@ -1,0 +1,125 @@
+------------ComFS init----------------
+init_lib_socket_info!
+lib_register_pid: 0
+init_runtime_info!
+ComFS initialized. 
+Now the program begins.
+libFS over
+------------ComFS init----------------
+init_lib_socket_info!
+lib_register_pid: 1
+init_runtime_info!
+The port is error!
+------------ComFS init----------------
+init_lib_socket_info!
+lib_register_pid: 0
+init_runtime_info!
+ComFS initialized. 
+Now the program begins.
+libFS over
+------------ComFS init----------------
+init_lib_socket_info!
+lib_register_pid: 1
+init_runtime_info!
+error port: 30100
+The port is error!
+------------ComFS init----------------
+init_lib_socket_info!
+lib_register_pid: 0
+init_runtime_info!
+lib pid: 0
+ComFS initialized. 
+Now the program begins.
+libFS over
+------------ComFS init----------------
+init_lib_socket_info!
+lib_register_pid: 1
+init_runtime_info!
+lib pid: 1
+error port: 30100
+The port is error!
+------------ComFS init----------------
+init_lib_socket_info!
+lib_register_pid: 0
+init_runtime_info!
+ComFS initialized. 
+Now the program begins.
+libFS over
+------------ComFS init----------------
+init_lib_socket_info!
+lib_register_pid: 1
+init_runtime_info!
+ComFS initialized. 
+Now the program begins.
+xxfs	1	64k	RANDWRITE	1161.588	56.360	187.675
+libFS over
+xxfs	1	64k	RANDWRITE	1796.214	36.485	51.764
+xxfs	8	64k	RANDWRITE	4458.564	117.591	184.955
+myopen call! /xx/test0 64
+dir inode1: 0 0
+myopen call! /xx/test1 64
+dir inode1: 0 0
+myopen call! /xx/test2 64
+dir inode1: 0 0
+myopen call! /xx/test3 64
+dir inode1: 0 0
+myopen call! /xx/test4 64
+dir inode1: 0 0
+myopen call! /xx/test5 64
+dir inode1: 0 0
+myopen call! /xx/test6 64
+dir inode1: 0 0
+myopen call! /xx/test7 64
+dir inode1: 0 0
+stat_ret: -1
+myopen call! /xx/test1 0
+dir inode1: 0 0
+myopen call! /xx/test3 0
+dir inode1: 0 0
+myopen call! /xx/test4 0
+dir inode1: 0 0
+myopen call! /xx/test6 0
+dir inode1: 0 0
+myopen call! /xx/test0 0
+dir inode1: 0 0
+myopen call! /xx/test2 0
+dir inode1: 0 0
+myopen call! /xx/test7 0
+myopen call! /xx/test5 0
+dir inode1: 0 0
+dir inode1: 0 0
+xxfs	8	64k	RANDWRITE	3169.364	165.397	323.213
+myopen call! /xx/test0 64
+dir inode1: 0 0
+myopen call! /xx/test1 64
+dir inode1: 0 0
+myopen call! /xx/test2 64
+dir inode1: 0 0
+myopen call! /xx/test3 64
+dir inode1: 0 0
+myopen call! /xx/test4 64
+dir inode1: 0 0
+myopen call! /xx/test5 64
+dir inode1: 0 0
+myopen call! /xx/test6 64
+dir inode1: 0 0
+myopen call! /xx/test7 64
+dir inode1: 0 0
+stat_ret: -1
+myopen call! /xx/test0 0
+dir inode1: 0 0
+myopen call! /xx/test1 0
+dir inode1: 0 0
+myopen call! /xx/test3 0
+dir inode1: 0 0
+myopen call! /xx/test2 0
+dir inode1: 0 0
+myopen call! /xx/test4 0
+dir inode1: 0 0
+myopen call! /xx/test6 0
+dir inode1: 0 0
+myopen call! /xx/test7 0
+dir inode1: 0 0
+myopen call! /xx/test5 0
+dir inode1: 0 0
+xxfs	8	64k	RANDWRITE	4100.949	127.825	217.421

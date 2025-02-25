@@ -1,0 +1,45 @@
+xxfs	1	256k	SEQWRITE	1921.019	136.452	410.571
+xxfs	2	256k	SEQWRITE	2939.356	178.359	514.951
+xxfs	4	256k	SEQWRITE	3929.030	266.873	603.584
+xxfs	8	256k	SEQWRITE	3958.091	529.834	1127.089
+xxfs	16	256k	SEQWRITE	4407.195	951.690	2652.645
+xxfs	1	128k	SEQWRITE	1846.040	141.997	417.206
+xxfs	2	128k	SEQWRITE	3239.767	161.824	442.554
+xxfs	4	128k	SEQWRITE	4118.827	254.580	551.452
+xxfs	8	128k	SEQWRITE	4174.532	502.364	995.054
+xxfs	16	128k	SEQWRITE	4391.028	955.195	2463.022
+xxfs	1	256k	SEQWRITE	1518.596	172.608	475.728
+index time: 0
+index time: 0
+xxfs	1	256k	SEQWRITE	1818.349	144.157	451.382
+index time: 0
+index time: 0
+index time: 0
+index time: 0
+xxfs	2	256k	SEQWRITE	3559.837	147.273	296.747
+index time: 0
+index time: 0
+index time: 0
+index time: 0
+index time: 0
+index time: 0
+index time: 0
+index time: 0
+xxfs	4	256k	SEQWRITE	4062.523	258.099	529.554
+index time: 0
+index time: 0
+xxfs	1	256k	SEQWRITE	14378.052	18.231	89.255
+index time: 0
+index time: 0
+index time: 0
+index time: 0
+xxfs	2	256k	SEQWRITE	19643.704	26.689	117.674
+exec time: 721868725
+exec time: 998588200
+xxfs	1	256k	SEQWRITE	15704.999	16.690	95.505
+exec time: 217265931
+exec time: 426805876
+exec time: 1224435102
+exec time: 1234446668
+xxfs	2	256k	SEQWRITE	19909.463	26.333	122.023
+xxfs	1	256k	SEQWRITE	1782.215	147.077	462.076

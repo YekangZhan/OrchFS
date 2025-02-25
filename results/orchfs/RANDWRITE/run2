@@ -1,0 +1,8 @@
+xxfs	1	256k	RANDWRITE	1576.115	166.315	493.729
+xxfs	2	256k	RANDWRITE	3158.408	165.993	487.215
+xxfs	4	256k	RANDWRITE	4806.352	218.158	349.931
+xxfs	8	256k	RANDWRITE	4840.874	433.198	679.801
+xxfs	16	256k	RANDWRITE	4919.644	852.524	1220.592
+create socket error: Too many open files(errno: 24)
+create socket error: Too many open files(errno: 24)
+xxfs	8	256k	RANDWRITE	4906.724	427.398	666.543

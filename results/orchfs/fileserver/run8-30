@@ -1,0 +1,29 @@
+lib_register_pid begin
+lib_register_pid: 0
+mig_threshold 283110 1024
+ComFS initialized. 
+Now the program begins.
+Filebench Version 1.5-alpha3
+0.000: Allocated 177MB of shared memory
+0.001: File-server Version 3.0 personality successfully loaded
+0.001: Populating and pre-allocating filesets
+0.005: bigfileset populated: 10000 files, avg. dir. width = 100, avg. dir. depth = 2.0, 0 leafdirs, 2500.000MB total size
+0.005: Removing bigfileset tree (if exists)
+0.005: Pre-allocating directories in bigfileset tree
+Pre-allocating 1063
+Pre-allocating 1065
+0.009: Pre-allocating files in bigfileset tree
+1.609: Waiting for pre-allocation to finish (in case of a parallel pre-allocation)
+1.609: Population and pre-allocation of filesets completed
+1.609: Starting 1 filereader instances
+lib_register_pid begin
+lib_register_pid: 1
+mig_threshold 283110 1024
+ComFS initialized. 
+Now the program begins.
+3.637: Running...
+filereader: /home/ubuntu/ComFS-debug/LibFS/lib_rwfunc.c:1478: read_from_file_newbaseline: Assertion `nvm_io_task_head==nvm_io_task_end' failed.
+5.662: Unexpected Process termination Code 3, Errno 0 around line 59
+6.637: Run took 3 seconds...
+6.637: NO VALID RESULTS! Filebench run terminated prematurely around line 59
+6.637: Shutting down processes
