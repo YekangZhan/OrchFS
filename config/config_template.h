@@ -36,7 +36,7 @@ extern "C"{
 // block size
 #define ORCH_SUPER_BLK_SIZE             512LL
 #define ORCH_INODE_SIZE                 512LL
-#define ORCH_IDX_SIZE                   2048LL
+#define ORCH_IDX_SIZE                   1024LL
 #define ORCH_VIRND_SIZE                 256LL
 #define ORCH_BUFMETA_SIZE               128LL
 #define ORCH_PAGE_SIZE                  ((int64_t) 1 << BW_4KiB)
@@ -110,8 +110,8 @@ extern "C"{
     // pass
 #else
     // #define MIGRATTE_ON
-    #define COUNT_ON
-    #define COUNT_TIME
+    // #define COUNT_ON
+    // #define COUNT_TIME
 #endif
 
 #define PAGE_SHIFT				    12
