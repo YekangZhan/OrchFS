@@ -43,9 +43,9 @@ Assume current directory is a project root directory.
 python config_parameter.py [dax] [SSD] [NVM_thds] [SSD_thds] [split_size] [fb_flag]
 ```
 - `[dax]`: The device file path of the dax-mode NVM. For example, `/dev/dax0.0`.
-- `[SSD]`: The device file path of the SSD. For example, `/dev/nvme1n1`.
-- `[NVM_thds]`: The maximum number of threads executing NVM IOs in parallel IO engine. If you use Intel Optane PM, it is recommended to set it to 4.
-- `[SSD_thds]`: The maximum number of threads executing SSD IOs in parallel IO engine. It is recommended to set this parameter to be greater than 8 and not exceed the number of physical CPU cores on the server.
+- `[SSD]`: The device file path of the SSD. For example, `/dev/nvme1n1`. If you want to employ multiple SSDs, please configure them as RAID0 using mdRAID. Setting the device file path of the RAID0 device. For example, `/dev/md1`.
+- `[NVM_thds]`: The number of dedicated IO threads for NVM-IOs in parallel IO engine. If you use Intel Optane PM, it is recommended to set it to 4.
+- `[SSD_thds]`: The number of dedicated IO threads for SSD-IOs in parallel IO engine. It is recommended to set this parameter to be greater than 8 and not exceed the number of physical CPU cores on the server.
 - `[split_size]`: The splitting granularity of the parallel IO engine for multi-threaded SSD IO execution. This parameter needs to be a multiple of 32KB. For example, '64k', '256k', '32k', etc..
 - `[fb_flag]`: This parameter can be omitted. If you will test the filebench, this parameter needs to be set to 'fb_mode_on'. Otherwise, this parameter does not need to be set.
 
