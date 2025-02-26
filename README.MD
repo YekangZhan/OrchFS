@@ -1,4 +1,4 @@
-# OrchFS [FAST'25] (Version-0.2)
+# [FAST'25] OrchFS (Version-0.2)
 
 OrchFS is a research prototype file system, presented in FAST 2025 ([Rethinking the Request-to-IO Transformation Process of File Systems for Full Utilization of High-Bandwidth SSDs](https://www.usenix.org/conference/fast25/presentation/zhan)).
 
@@ -104,4 +104,4 @@ TODO:
 - Add comments and fix potential bugs.
 
 
-If you have any questions and comments, please feel free to contact [](zhanyekang@foxmail.com). We look forward to your valuable insights.
+If you have any questions and comments, please feel free to contact zhanyekang@foxmail.com. We look forward to your valuable insights.
